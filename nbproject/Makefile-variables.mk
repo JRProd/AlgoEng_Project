@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-MacOSX
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-MacOSX
-CND_ARTIFACT_NAME_Debug=confrencescheduling
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-MacOSX/confrencescheduling
+CND_ARTIFACT_NAME_Debug=algoeng_project
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-MacOSX/algoeng_project
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-MacOSX/package
-CND_PACKAGE_NAME_Debug=confrencescheduling.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-MacOSX/package/confrencescheduling.tar
+CND_PACKAGE_NAME_Debug=algoengproject.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-MacOSX/package/algoengproject.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-MacOSX
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-MacOSX
-CND_ARTIFACT_NAME_Release=confrencescheduling
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-MacOSX/confrencescheduling
+CND_ARTIFACT_NAME_Release=algoeng_project
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-MacOSX/algoeng_project
 CND_PACKAGE_DIR_Release=dist/Release/GNU-MacOSX/package
-CND_PACKAGE_NAME_Release=confrencescheduling.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-MacOSX/package/confrencescheduling.tar
+CND_PACKAGE_NAME_Release=algoengproject.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-MacOSX/package/algoengproject.tar
 #
 # include compiler specific variables
 #

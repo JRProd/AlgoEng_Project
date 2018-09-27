@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=ConfrenceScheduling
+PROJECTNAME=AlgoEng_Project
 
 # Active Configuration
 DEFAULTCONF=Debug
