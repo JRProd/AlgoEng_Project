@@ -112,5 +112,5 @@ void RandomNumberGenerator::seedGenerator(const time_t seed) {
 int RandomNumberGenerator::randomNumber(
         const int lowerBound, 
         const int upperBound) {
-    return (rand() % upperBound) + lowerBound;
+    return (rand() % (upperBound-lowerBound)) + lowerBound;
 }

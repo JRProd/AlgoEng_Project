@@ -22,7 +22,7 @@ using namespace std;
 #include <iostream>
 int main(int argc, char** argv) {
 
-    ConferenceConflictDetector test(100,2,30, Dist::Skewed);
+    ConferenceConflictDetector test(10000,1000,2000, Dist::Skewed);
     test.selectConflictSize(ConflictSizeConstrinat::N2);
     test.generateConflicts(10);
     std::cout << "Handling results" << std::endl;

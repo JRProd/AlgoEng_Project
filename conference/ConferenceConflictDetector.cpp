@@ -88,10 +88,10 @@ void ConferenceConflictDetector::generateConflicts(int showOutput) {
         conflictHandler->addConflictCount(MathUtils::pairs(set.size()));
         
         if(shouldShow) {
-            if(attendee % showOutput == 0) {
+            if(attendee % showOutput == 0 && attendee != 0) {
                 std::cout << "." ;
             }
-            if(attendee % (showOutput*15) == 0 && attendee != 0) {
+            if(attendee % (showOutput*20) == 0 && attendee != 0) {
                 std::cout << std::endl;
             }
         }
@@ -136,9 +136,9 @@ void ConferenceConflictDetector::handleResults(std::string output) {
     std::cout << "Begin writing P/E array" << std::endl;
     int** peArray = conflictHandler->peArray();
     //P[] Output
-    fileHandler.writeList("P", *(peArray+0), sessions, 10);
+    fileHandler.writeList("P", *(peArray+0), sessions, 1000);
     //E[] Output
-    fileHandler.writeList("E", *(peArray+1), conflictHandler->getSizeOfEArray(), 10);
+    fileHandler.writeList("E", *(peArray+1), conflictHandler->getSizeOfEArray(), 1000);
     
     delete[] *(peArray+0);
     delete[] *(peArray+1);

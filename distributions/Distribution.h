@@ -9,6 +9,7 @@
 #define DISTRIBUTION_H
 
 #include <set>
+#include <time.h>
 
 #include "../utils/RandomNumberGenerator.h"
 
@@ -21,6 +22,7 @@ enum class Dist {
 
 class Distribution {
 public:
+    Distribution();
     virtual ~Distribution();
     
     /** Generate a unique list of sessions
