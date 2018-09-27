@@ -45,6 +45,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/distributions/TwoTieredDistribution.o \
 	${OBJECTDIR}/distributions/UniformDistribution.o \
 	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/utils/FileHandler.o \
 	${OBJECTDIR}/utils/MathUtils.o \
 	${OBJECTDIR}/utils/RandomNumberGenerator.o
 
@@ -145,6 +146,11 @@ ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+
+${OBJECTDIR}/utils/FileHandler.o: utils/FileHandler.cpp
+	${MKDIR} -p ${OBJECTDIR}/utils
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/utils/FileHandler.o utils/FileHandler.cpp
 
 ${OBJECTDIR}/utils/MathUtils.o: utils/MathUtils.cpp
 	${MKDIR} -p ${OBJECTDIR}/utils
@@ -372,6 +378,19 @@ ${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.cpp
 	    $(COMPILE.cc) -g -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main_nomain.o main.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/main.o ${OBJECTDIR}/main_nomain.o;\
+	fi
+
+${OBJECTDIR}/utils/FileHandler_nomain.o: ${OBJECTDIR}/utils/FileHandler.o utils/FileHandler.cpp 
+	${MKDIR} -p ${OBJECTDIR}/utils
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/utils/FileHandler.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/utils/FileHandler_nomain.o utils/FileHandler.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/utils/FileHandler.o ${OBJECTDIR}/utils/FileHandler_nomain.o;\
 	fi
 
 ${OBJECTDIR}/utils/MathUtils_nomain.o: ${OBJECTDIR}/utils/MathUtils.o utils/MathUtils.cpp 

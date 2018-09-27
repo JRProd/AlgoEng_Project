@@ -32,6 +32,6 @@
 *.app
 
 # Personal
-build
-dist
-nbproject
+build/
+dist/
+nbproject/
