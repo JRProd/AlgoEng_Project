@@ -35,3 +35,6 @@
 build/
 dist/
 nbproject/
+.dep.inc
+**.swp
+**.txt
