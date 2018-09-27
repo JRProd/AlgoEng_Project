@@ -1,0 +1,694 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <logicalFolder name="f1" displayName="Conference" projectFiles="true">
+        <itemPath>conference/ConferenceConflictDetector.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="Conflict" projectFiles="true">
+        <itemPath>conflicts/ConflictGraph.h</itemPath>
+        <itemPath>conflicts/ConflictHandler.h</itemPath>
+        <itemPath>conflicts/ConflictList.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f3" displayName="Distributions" projectFiles="true">
+        <itemPath>distributions/BinomialDistribution.h</itemPath>
+        <itemPath>distributions/Distribution.h</itemPath>
+        <itemPath>distributions/SkewedDistribution.h</itemPath>
+        <itemPath>distributions/TwoTieredDistribution.h</itemPath>
+        <itemPath>distributions/UniformDistribution.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f4" displayName="Utils" projectFiles="true">
+        <itemPath>utils/FileHandler.h</itemPath>
+        <itemPath>utils/MathUtils.h</itemPath>
+        <itemPath>utils/RandomNumberGenerator.h</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="f4" displayName="Conference" projectFiles="true">
+        <itemPath>conference/ConferenceConflictDetector.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="Conflict" projectFiles="true">
+        <itemPath>conflicts/ConflictGraph.cpp</itemPath>
+        <itemPath>conflicts/ConflictHandler.cpp</itemPath>
+        <itemPath>conflicts/ConflictList.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f1" displayName="Distributions" projectFiles="true">
+        <itemPath>distributions/BinomialDistribution.cpp</itemPath>
+        <itemPath>distributions/Distribution.cpp</itemPath>
+        <itemPath>distributions/SkewedDistribution.cpp</itemPath>
+        <itemPath>distributions/TwoTieredDistribution.cpp</itemPath>
+        <itemPath>distributions/UniformDistribution.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f3" displayName="Utils" projectFiles="true">
+        <itemPath>utils/FileHandler.cpp</itemPath>
+        <itemPath>utils/MathUtils.cpp</itemPath>
+        <itemPath>utils/RandomNumberGenerator.cpp</itemPath>
+      </logicalFolder>
+      <itemPath>main.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+      <logicalFolder name="f3"
+                     displayName="Conflict Graph Unit Test"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/units/ConflictGraphTestRunner.cpp</itemPath>
+        <itemPath>tests/units/ConflictGraphUnitTest.cpp</itemPath>
+        <itemPath>tests/units/ConflictGraphUnitTest.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f5"
+                     displayName="Conflict List Unit Test"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/units/ConflictListTestRunner.cpp</itemPath>
+        <itemPath>tests/units/ConflictListUnitTest.cpp</itemPath>
+        <itemPath>tests/units/ConflictListUnitTest.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f1"
+                     displayName="Distribution Unit Test"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/units/DistributionTestRunner.cpp</itemPath>
+        <itemPath>tests/units/DistributionUnitTest.cpp</itemPath>
+        <itemPath>tests/units/DistributionUnitTest.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f4"
+                     displayName="Math Util Unit Test"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/units/MathUtilTestRunner.cpp</itemPath>
+        <itemPath>tests/units/MathUtilUnitTest.cpp</itemPath>
+        <itemPath>tests/units/MathUtilUnitTest.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2"
+                     displayName="Random Generator Unit Test"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/units/RandomGeneratorTestRunner.cpp</itemPath>
+        <itemPath>tests/units/RandomGeneratorUnitTest.cpp</itemPath>
+        <itemPath>tests/units/RandomGeneratorUnitTest.h</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <standard>8</standard>
+        </ccTool>
+        <linkerTool>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+        </linkerTool>
+      </compileType>
+      <item path="conference/ConferenceConflictDetector.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="conference/ConferenceConflictDetector.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="conflicts/ConflictGraph.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="conflicts/ConflictGraph.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="conflicts/ConflictHandler.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="conflicts/ConflictHandler.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="conflicts/ConflictList.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="conflicts/ConflictList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="distributions/BinomialDistribution.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="distributions/BinomialDistribution.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="distributions/Distribution.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="distributions/Distribution.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="distributions/SkewedDistribution.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="distributions/SkewedDistribution.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="distributions/TwoTieredDistribution.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="distributions/TwoTieredDistribution.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="distributions/UniformDistribution.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="distributions/UniformDistribution.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <folder path="TestFiles">
+        <linkerTool>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+          <linkerLibItems>
+            <linkerOptionItem>-lcppunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f2">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f2</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+          <linkerLibItems>
+            <linkerOptionItem>-lcppunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f3">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f3</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+          <linkerLibItems>
+            <linkerOptionItem>-lcppunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f4">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f4</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+          <linkerLibItems>
+            <linkerOptionItem>-lcppunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f5">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f5</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+          <linkerLibItems>
+            <linkerOptionItem>-lcppunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/units/ConflictGraphTestRunner.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="tests/units/ConflictGraphUnitTest.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="tests/units/ConflictGraphUnitTest.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="tests/units/ConflictListTestRunner.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="tests/units/ConflictListUnitTest.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="tests/units/ConflictListUnitTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/units/DistributionTestRunner.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="tests/units/DistributionUnitTest.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="tests/units/DistributionUnitTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/units/MathUtilTestRunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/units/MathUtilUnitTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/units/MathUtilUnitTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/units/RandomGeneratorTestRunner.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="tests/units/RandomGeneratorUnitTest.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="tests/units/RandomGeneratorUnitTest.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="utils/FileHandler.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="utils/FileHandler.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="utils/MathUtils.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="utils/MathUtils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="utils/RandomNumberGenerator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="utils/RandomNumberGenerator.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <standard>8</standard>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <linkerTool>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+        </linkerTool>
+      </compileType>
+      <item path="conference/ConferenceConflictDetector.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="conference/ConferenceConflictDetector.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="conflicts/ConflictGraph.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="conflicts/ConflictGraph.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="conflicts/ConflictHandler.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="conflicts/ConflictHandler.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="conflicts/ConflictList.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="conflicts/ConflictList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="distributions/BinomialDistribution.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="distributions/BinomialDistribution.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="distributions/Distribution.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="distributions/Distribution.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="distributions/SkewedDistribution.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="distributions/SkewedDistribution.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="distributions/TwoTieredDistribution.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="distributions/TwoTieredDistribution.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="distributions/UniformDistribution.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="distributions/UniformDistribution.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <folder path="TestFiles">
+        <linkerTool>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f2">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f2</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f3">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f3</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f4">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f4</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f5">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f5</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/units/ConflictGraphTestRunner.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="tests/units/ConflictGraphUnitTest.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="tests/units/ConflictGraphUnitTest.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="tests/units/ConflictListTestRunner.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="tests/units/ConflictListUnitTest.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="tests/units/ConflictListUnitTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/units/DistributionTestRunner.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="tests/units/DistributionUnitTest.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="tests/units/DistributionUnitTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/units/MathUtilTestRunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/units/MathUtilUnitTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/units/MathUtilUnitTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/units/RandomGeneratorTestRunner.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="tests/units/RandomGeneratorUnitTest.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="tests/units/RandomGeneratorUnitTest.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="utils/FileHandler.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="utils/FileHandler.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="utils/MathUtils.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="utils/MathUtils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="utils/RandomNumberGenerator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="utils/RandomNumberGenerator.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
