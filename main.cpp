@@ -19,26 +19,40 @@
 
 using namespace std;
 
-#include <iostream>
 int main(int argc, char** argv) {
     
+    int debugMode = 0;
+    
     const ConferenceConflictParams* params = ConferenceConflictParams::Builder()
-            .setSessions(10000)
-            ->setAttendees(10)
-            ->setSessionsPerAttendee(5000)
-            ->setDistribution(Dist::Tiered)
+            .setSessions(1000)
+            ->setAttendees(1000)
+            ->setSessionsPerAttendee(100)
+            ->setDistribution(Dist::Skewed)
             ->setShowOutput(0)
             ->setOutputNewLine(10)
             ->setPBatchSize(10000)
             ->setEBatchSize(100000)
             ->setConflictSizeConstrinat(ConflictSizeConstrinat::N2)
-            ->setDebugMode(3)
+            ->setDebugMode(debugMode)
             ->build();
 
     ConferenceConflictDetector conferenceDetector(params);
     
+    std::chrono::time_point<std::chrono::system_clock> start;
+    if(debugMode >= 0) {
+        std::cout << "main.cpp #### Starting" << std::endl;
+        start = std::chrono::system_clock::now();
+    }
     conferenceDetector.generateConflicts();
     // conferenceDetector.handleResults("test.txt");
+    
+    if(debugMode >= 0) {
+        std::cout << "main.cpp #### Finished in ";
+        auto end = std::chrono::system_clock::now() - start;
+        long duration = 
+            std::chrono::duration_cast<std::chrono::milliseconds>(end).count();
+        std::cout << duration << "ms" << std::endl;
+    }
     
     delete params;
 }

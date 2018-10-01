@@ -101,8 +101,12 @@ void ConferenceConflictDetector::generateConflicts() {
         }
         
         if(conflictHandler->isAtMaxConflicts()) {
-            if(shouldShow) {
-                std::cout << std::endl << "Ending early because no more combinations need to be accounted for." << std::endl;
+            if(debugMode >= 1) {
+                std::cout << std::endl;
+                if (debugMode >= 2 ) {
+                    std::cout << "Final attendee was " << attendee << std::endl;
+                }
+                std::cout << "Ending early because no more combinations need to be accounted for." << std::endl;
             }
             return;
         }
@@ -293,6 +297,7 @@ void ConferenceConflictDetector::addConflictSet(std::set<int> set) {
         }
     }
     if (debugMode >= 2 ) {
+        std::cout << "Total unique pairs after new set added - " << conflictHandler->getUniqueConflictCount() << std::endl;
         std::cout << "ConferenceConflictDetector::addConflictSet: Finished pair creation in ";
         auto end = std::chrono::system_clock::now() - start;
         long duration = 
