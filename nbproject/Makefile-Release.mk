@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/conference/ConferenceConflictDetector.o \
+	${OBJECTDIR}/conference/ConferenceConflictParams.o \
 	${OBJECTDIR}/conflicts/ConflictGraph.o \
 	${OBJECTDIR}/conflicts/ConflictHandler.o \
 	${OBJECTDIR}/conflicts/ConflictList.o \
@@ -101,6 +102,11 @@ ${OBJECTDIR}/conference/ConferenceConflictDetector.o: conference/ConferenceConfl
 	${MKDIR} -p ${OBJECTDIR}/conference
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/conference/ConferenceConflictDetector.o conference/ConferenceConflictDetector.cpp
+
+${OBJECTDIR}/conference/ConferenceConflictParams.o: conference/ConferenceConflictParams.cpp
+	${MKDIR} -p ${OBJECTDIR}/conference
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/conference/ConferenceConflictParams.o conference/ConferenceConflictParams.cpp
 
 ${OBJECTDIR}/conflicts/ConflictGraph.o: conflicts/ConflictGraph.cpp
 	${MKDIR} -p ${OBJECTDIR}/conflicts
@@ -261,6 +267,19 @@ ${OBJECTDIR}/conference/ConferenceConflictDetector_nomain.o: ${OBJECTDIR}/confer
 	    $(COMPILE.cc) -O2 -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/conference/ConferenceConflictDetector_nomain.o conference/ConferenceConflictDetector.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/conference/ConferenceConflictDetector.o ${OBJECTDIR}/conference/ConferenceConflictDetector_nomain.o;\
+	fi
+
+${OBJECTDIR}/conference/ConferenceConflictParams_nomain.o: ${OBJECTDIR}/conference/ConferenceConflictParams.o conference/ConferenceConflictParams.cpp 
+	${MKDIR} -p ${OBJECTDIR}/conference
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/conference/ConferenceConflictParams.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/conference/ConferenceConflictParams_nomain.o conference/ConferenceConflictParams.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/conference/ConferenceConflictParams.o ${OBJECTDIR}/conference/ConferenceConflictParams_nomain.o;\
 	fi
 
 ${OBJECTDIR}/conflicts/ConflictGraph_nomain.o: ${OBJECTDIR}/conflicts/ConflictGraph.o conflicts/ConflictGraph.cpp 

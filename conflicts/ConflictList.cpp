@@ -15,6 +15,8 @@ ConflictList::ConflictList(int size) {
     conflictCount = 0;
     uniqueConflictCount = 0;
     
+    maxConflict = MathUtils::pairs(size);
+    
     list = nullptr;
 }
 
@@ -67,7 +69,7 @@ void ConflictList::addConflict(std::pair<int, int> pair) {
                 pair.second, 
                 pair.first);
         
-        Node* nodeSwap = new Node(flipedPair, node);
+         Node* nodeSwap = new Node(flipedPair, node);
         
         list = nodeSwap;
         
@@ -80,20 +82,31 @@ ConflictSizeConstrinat ConflictList::whatSize() {
 }
 
 
+#include <iostream>
 bool ConflictList::isInList(std::pair<int, int> pair) {
     // If there is no list currently
     if(list == nullptr) {
         return false;
     }
     
-    ConflictList::Node* root = list;
-    while(root != nullptr) {
-        if(root->getData() == pair) {
+    if(USE_HASH_SET) {
+        // If not in the set
+        if(pairsAdded.find(pair) == pairsAdded.end()) {
+            pairsAdded.insert(pair);
             return true;
         }
-        root = root->getNext();
+        return false;
+    } else {
+        ConflictList::Node* root = list;
+            while(root != nullptr) {
+                // Check if (a,b) is equal to (a,b) or (b,a)
+                if(root->getData() == pair ) {
+                    return true;
+                }
+                root = root->getNext();
+            }
+        return false;
     }
-    return false;
 }
 
 ConflictList::Node::Node(std::pair<int,int> data, Node* next) {

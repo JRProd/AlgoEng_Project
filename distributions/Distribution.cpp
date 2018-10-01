@@ -30,23 +30,23 @@ std::set<int> Distribution::generateSessions(const int size) {
     std::set<int> sessions;
     int startingLowerBound = lowerBound;
     int startingUpperBound = upperBound;
-    //std::cout << lowerBound << " " << upperBound << ":";
     while(sessions.size() != size) {
         int session = generateSession();
+        std::cout << session << std::endl;
         if(session == lowerBound) {
             lowerBound = lowerBound+1;
+            std::cout << lowerBound << " - " << upperBound << std::endl;
         }
         if(session == upperBound-1) {
             upperBound = upperBound-1;
+            std::cout << lowerBound << " - " << upperBound << std::endl;
         }
-        //std::cout << session << ":" << sessions.size() << " ";
         sessions.insert(session);
     }
     
     lowerBound = startingLowerBound;
     upperBound = startingUpperBound;
     
-    //std::cout << std::endl;
     return sessions;
 }
 

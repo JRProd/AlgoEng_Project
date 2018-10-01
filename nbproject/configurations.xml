@@ -6,6 +6,7 @@
                    projectFiles="true">
       <logicalFolder name="f1" displayName="Conference" projectFiles="true">
         <itemPath>conference/ConferenceConflictDetector.h</itemPath>
+        <itemPath>conference/ConferenceConflictParams.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="Conflict" projectFiles="true">
         <itemPath>conflicts/ConflictGraph.h</itemPath>
@@ -34,6 +35,7 @@
                    projectFiles="true">
       <logicalFolder name="f4" displayName="Conference" projectFiles="true">
         <itemPath>conference/ConferenceConflictDetector.cpp</itemPath>
+        <itemPath>conference/ConferenceConflictParams.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="Conflict" projectFiles="true">
         <itemPath>conflicts/ConflictGraph.cpp</itemPath>
@@ -131,6 +133,7 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
         </linkerTool>
       </compileType>
@@ -140,6 +143,16 @@
             flavor2="0">
       </item>
       <item path="conference/ConferenceConflictDetector.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="conference/ConferenceConflictParams.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="conference/ConferenceConflictParams.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -211,6 +224,7 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
         </linkerTool>
       </folder>
@@ -224,6 +238,7 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f1</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -257,6 +272,7 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcppunit</linkerOptionItem>
@@ -273,6 +289,7 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f3</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -300,6 +317,7 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcppunit</linkerOptionItem>
@@ -316,6 +334,7 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f5</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -434,6 +453,7 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
         </linkerTool>
       </compileType>
@@ -443,6 +463,16 @@
             flavor2="0">
       </item>
       <item path="conference/ConferenceConflictDetector.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="conference/ConferenceConflictParams.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="conference/ConferenceConflictParams.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -514,6 +544,7 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
         </linkerTool>
       </folder>
@@ -527,6 +558,7 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f1</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -560,6 +592,7 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
@@ -576,6 +609,7 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f3</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -603,6 +637,7 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
@@ -619,6 +654,7 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f5</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>

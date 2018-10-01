@@ -36,26 +36,47 @@ ConferenceConflictDetector::ConferenceConflictDetector(
     sesPerAtte = K;    
     distribution = dist;
     
-    switch(distribution) {
-        case Dist::Uniform:
-            distributionGenerator = new UniformDistribution(0,N);
-            break;
-        case Dist::Tiered:
-            distributionGenerator = new TwoTieredDistribution(0,100, .8, N);
-            break;
-        case Dist::Skewed:
-            distributionGenerator = new SkewedDistribution(0,N);
-            break;
-        case Dist::Binomial:
-            distributionGenerator = new BinomialDistribution(0,N);
-            break;
-        default:
-            distributionGenerator = new UniformDistribution(0,N);
-            break;
-    }
+    setUpDistribution();
 }
 
-ConferenceConflictDetector::ConferenceConflictDetector(const ConferenceConflictDetector& orig) {
+ConferenceConflictDetector::ConferenceConflictDetector(
+        const int N, 
+        const int S, 
+        const int K, 
+        const Dist dist,
+        const int output) {
+    if(N < 0) {
+        throw std::invalid_argument("ConferenceConflictDetector: N must be positive");
+    }
+    if(S < 0) {
+        throw std::invalid_argument("ConferenceConflictDetector: S must be positive");
+    }
+    if(K < 0) {
+        throw std::invalid_argument("ConferenceConflictDetector: K must be positive");
+    }
+    if(K > N) {
+        throw std::invalid_argument("ConferenceConflictDetector: K must be less than N");
+    }
+    
+    sessions = N;
+    attendees = S;
+    sesPerAtte = K;    
+    distribution = dist;
+    showOutput = output; 
+    
+    setUpDistribution();
+}
+
+ConferenceConflictDetector::ConferenceConflictDetector(
+        const ConferenceConflictParams* params) {
+    
+    setUpDistribution();
+}
+
+ConferenceConflictDetector::ConferenceConflictDetector(
+        const ConferenceConflictDetector& orig) {
+    
+    setUpDistribution();
 }
 
 ConferenceConflictDetector::~ConferenceConflictDetector() {
@@ -76,24 +97,33 @@ void ConferenceConflictDetector::selectConflictSize(ConflictSizeConstrinat size)
     }
 }
 
-void ConferenceConflictDetector::generateConflicts(int showOutput) {
+void ConferenceConflictDetector::generateConflicts() {
     bool shouldShow = false;
     if(showOutput > 0 ) {
         std::cout << "ConferenceConflictDetector::generateConflicts: Showing every " << showOutput << "th iteration" << std::endl;
         shouldShow = true;
     }
+    
+    conflictHandler->addConflictCount(MathUtils::pairs(sesPerAtte) * attendees);
+    
     for(int attendee = 0; attendee < attendees; attendee++) {
         std::set<int> set = distributionGenerator->generateSessions(sesPerAtte);
         addConflictSet(set);
-        conflictHandler->addConflictCount(MathUtils::pairs(set.size()));
         
         if(shouldShow) {
             if(attendee % showOutput == 0 && attendee != 0) {
                 std::cout << "." ;
             }
-            if(attendee % (showOutput*20) == 0 && attendee != 0) {
+            if(attendee % (showOutput*showOutputNewLine) == 0 && attendee != 0) {
                 std::cout << std::endl;
             }
+        }
+        
+        if(conflictHandler->isAtMaxConflicts()) {
+            if(shouldShow) {
+                std::cout << std::endl << "Ending early because no more combinations need to be accounted for." << std::endl;
+            }
+            return;
         }
     }
     
@@ -107,7 +137,7 @@ void ConferenceConflictDetector::handleResults(std::string output) {
     //N Output
     fileHandler.write("N", sessions);
     //M Output
-    fileHandler.write("M", conflictHandler->getUniqueConflictCount());
+    fileHandler.write("M", conflictHandler->getSizeOfEArray());
     //T Output
     fileHandler.write("T", conflictHandler->getConflictCount());
     //S Output
@@ -136,9 +166,10 @@ void ConferenceConflictDetector::handleResults(std::string output) {
     std::cout << "Begin writing P/E array" << std::endl;
     int** peArray = conflictHandler->peArray();
     //P[] Output
-    fileHandler.writeList("P", *(peArray+0), sessions, 1000);
+    fileHandler.writeList("P", *(peArray+0), sessions, pBatchSize);
     //E[] Output
-    fileHandler.writeList("E", *(peArray+1), conflictHandler->getSizeOfEArray(), 1000);
+    fileHandler.writeList("E", *(peArray+1), conflictHandler->getSizeOfEArray(), 
+            eBatchSize);
     
     delete[] *(peArray+0);
     delete[] *(peArray+1);
@@ -146,6 +177,39 @@ void ConferenceConflictDetector::handleResults(std::string output) {
     
     fileHandler.closeFile();
 }
+
+void ConferenceConflictDetector::setUpDistribution() {
+    switch(distribution) {
+        case Dist::Uniform:
+            distributionGenerator = new UniformDistribution(
+                    lowerBound, 
+                    sessions);
+            break;
+        case Dist::Tiered:
+            distributionGenerator = new TwoTieredDistribution(
+                    0,
+                    twoTieredTier, 
+                    twoTieredSplit, 
+                    sessions);
+            break;
+        case Dist::Skewed:
+            distributionGenerator = new SkewedDistribution(
+                    lowerBound, 
+                    sessions);
+            break;
+        case Dist::Binomial:
+            distributionGenerator = new BinomialDistribution(
+                    lowerBound,
+                    sessions);
+            break;
+        default:
+            distributionGenerator = new UniformDistribution(
+                    lowerBound,
+                    sessions);
+            break;
+    }
+}
+
 
 void ConferenceConflictDetector::addConflictSet(std::set<int> set) {
     for(std::set<int>::iterator first = set.begin(); 

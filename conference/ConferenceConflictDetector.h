@@ -16,6 +16,8 @@
 
 #include <iostream>
 
+#include "ConferenceConflictParams.h"
+
 #include "../conflicts/ConflictHandler.h"
 #include "../conflicts//ConflictGraph.h"
 #include "../conflicts/ConflictList.h"
@@ -36,21 +38,43 @@ public:
             const int K, 
             const Dist dist);
     
+    ConferenceConflictDetector(const int N, 
+            const int S, 
+            const int K, 
+            const Dist dist,
+            const int output);
+    
+    ConferenceConflictDetector(
+            const ConferenceConflictParams* params);
+    
     ConferenceConflictDetector(const ConferenceConflictDetector& orig);
     virtual ~ConferenceConflictDetector();
     
     void selectConflictSize(ConflictSizeConstrinat size);
-    void generateConflicts(int showOutput);
+    void generateConflicts();
     void handleResults(std::string output);
 private:
     int sessions;
     int attendees;
     int sesPerAtte;
     
+    int lowerBound = 0;
+    
+    int twoTieredTier = 100;
+    float twoTieredSplit = .8;
+    
+    int showOutput = 0;
+    int showOutputNewLine = 20;
+    
+    int pBatchSize = 1000;
+    int eBatchSize = 1000;
+    
     Dist distribution;
     Distribution* distributionGenerator;
     
     ConflictHandler* conflictHandler;
+    
+    void setUpDistribution();
     
     void addConflictSet(std::set<int> set);
 };

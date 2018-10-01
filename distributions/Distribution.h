@@ -37,6 +37,7 @@ public:
 protected:
     int lowerBound;
     int upperBound;
+    
     /** Generate individual sessions based on a distribution
      * 
      * @return const int - Sessions generated

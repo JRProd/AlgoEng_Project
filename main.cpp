@@ -22,9 +22,9 @@ using namespace std;
 #include <iostream>
 int main(int argc, char** argv) {
 
-    ConferenceConflictDetector test(10000,1000,2000, Dist::Skewed);
+    ConferenceConflictDetector test(10000,100000,10000, Dist::Uniform, 10);
     test.selectConflictSize(ConflictSizeConstrinat::N2);
-    test.generateConflicts(10);
+    test.generateConflicts();
     std::cout << "Handling results" << std::endl;
     test.handleResults("test.txt");
 }

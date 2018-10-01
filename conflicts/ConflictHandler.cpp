@@ -32,5 +32,6 @@ unsigned long ConflictHandler::getConflictCount() {
     return conflictCount;
 }
 
-
-
+bool ConflictHandler::isAtMaxConflicts() {
+    return maxConflict == uniqueConflictCount;
+}

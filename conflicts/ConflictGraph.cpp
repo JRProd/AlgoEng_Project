@@ -21,6 +21,8 @@ ConflictGraph::ConflictGraph(int size) {
     conflictCount = 0;
     uniqueConflictCount = 0;
     
+    maxConflict = MathUtils::pairs(size);
+    
     buildGraph();
 }
 

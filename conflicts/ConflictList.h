@@ -8,6 +8,8 @@
 #ifndef CONFLICTLIST_H
 #define CONFLICTLIST_H
 
+#include <set>
+
 #include "ConflictHandler.h"
 
 class ConflictList: public ConflictHandler{
@@ -35,6 +37,9 @@ public:
     
     ConflictSizeConstrinat whatSize() override;
 private: 
+    const bool USE_HASH_SET = false;
+    std::set<std::pair<int,int>> pairsAdded;
+    
     int N;
     
     /** Checks if the value is in the list
