@@ -18,7 +18,7 @@
 
 class SkewedDistribution: public Distribution {
 public:
-    SkewedDistribution(const int lowerB, const int uppperB);
+    SkewedDistribution(const int lowerB, const int uppperB, const int debug);
     virtual ~SkewedDistribution();
     
     Dist whichDistribution() override;

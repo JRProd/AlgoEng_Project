@@ -22,13 +22,18 @@ public:
             const int lowerB,
             const int tr,
             const float splt,
-            const int upperB);
+            const int upperB,
+            const int debug);
     virtual ~TwoTieredDistribution();
+    
+    virtual std::set<int> generateSessions(const int size) override;
     
     Dist whichDistribution() override;
 private:
     int tier;
     float split;
+    
+    bool useTieredRng;
     
     const int generateSession() override;
 };

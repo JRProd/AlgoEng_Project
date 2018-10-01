@@ -18,7 +18,7 @@
 
 class UniformDistribution: public Distribution {
 public:
-    UniformDistribution(const int lowerB, const int upperB);
+    UniformDistribution(const int lowerB, const int upperB, const int debug);
     virtual ~UniformDistribution();
     
     Dist whichDistribution() override;

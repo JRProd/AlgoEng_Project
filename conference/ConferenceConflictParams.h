@@ -17,24 +17,23 @@
 #include "../distributions/Distribution.h"
 
 #include "../conflicts/ConflictHandler.h"
-#include "../conflicts/ConflictGraph.h"
-#include "../conflicts/ConflictList.h"
 
 class ConferenceConflictParams {
 public:
-    int getSessions();
-    int getAttendees();
-    int getSessionsPerAttende();
-    int getLowerBound();
-    int getTwoTieredTier();
-    float getTwoTieredSplit();
-    int getOutput();
-    int getOutputNewLine();
-    int getPBatch();
-    int getEBatch();
-    Dist getDistribution();
-    ConflictHandler* getConflictHandler();
-    bool getUsedHashSet();
+    int getSessions() const;
+    int getAttendees() const;
+    int getSessionsPerAttende() const;
+    int getLowerBound() const;
+    int getTwoTieredTier() const;
+    float getTwoTieredSplit() const;
+    int getOutput() const;
+    int getOutputNewLine() const;
+    int getPBatch() const;
+    int getEBatch() const;
+    Dist getDistribution()const;
+    ConflictSizeConstrinat getConflictSizeConstrinat() const;
+    bool getUsedHashSet() const;
+    int getDebugMode() const;
     class Builder {
     public:
         Builder* setSessions(int sess);
@@ -48,8 +47,9 @@ public:
         Builder* setPBatchSize(int pBtch);
         Builder* setEBatchSize(int eBtch);
         Builder* setDistribution(Dist distro);
-        Builder* setConflictHandler(ConflictSizeConstrinat size);
+        Builder* setConflictSizeConstrinat(ConflictSizeConstrinat size);
         Builder* setUseHashSet(bool hash);
+        Builder* setDebugMode(int debug);
         const ConferenceConflictParams* build();
     private:
         int sessions = 1000;
@@ -63,8 +63,9 @@ public:
         int pBatch = 1000;
         int eBatch = 5000;
         Dist dist = Dist::Uniform;
-        ConflictHandler* conflictHandler = nullptr;
+        ConflictSizeConstrinat conflictSize;
         bool useHashSet = false;
+        int debugMode = 0;
     };
 private:
     int sessions;
@@ -78,8 +79,9 @@ private:
     int pBatch;
     int eBatch;
     Dist dist;
-    ConflictHandler* conflictHandler;
+    ConflictSizeConstrinat conflictSize;
     bool useHashSet;
+    int debugMode;
     
     ConferenceConflictParams(
             int sess,
@@ -93,8 +95,9 @@ private:
             int pBtch,
             int eBtch,
             Dist distro,
-            ConflictHandler* handler,
-            bool hash);
+            ConflictSizeConstrinat size,
+            bool hash,
+            int debug);
 };
 
 #endif /* CONFERENCECONFLICTPARAM_H */

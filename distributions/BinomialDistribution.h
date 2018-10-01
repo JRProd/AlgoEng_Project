@@ -18,7 +18,7 @@
 
 class BinomialDistribution: public Distribution {
 public:
-    BinomialDistribution(const int lowerB, const int upperB);
+    BinomialDistribution(const int lowerB, const int upperB, const int debug);
     virtual ~BinomialDistribution();
     
     Dist whichDistribution() override;

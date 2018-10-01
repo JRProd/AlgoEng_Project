@@ -13,57 +13,62 @@
 
 #include "ConferenceConflictParams.h"
 
-int ConferenceConflictParams::getSessions() {
+int ConferenceConflictParams::getSessions() const {
     return sessions;
 }
 
-int ConferenceConflictParams::getAttendees() {
+int ConferenceConflictParams::getAttendees() const {
     return attendees;
 }
 
-int ConferenceConflictParams::getSessionsPerAttende() {
+int ConferenceConflictParams::getSessionsPerAttende() const {
     return sesPerAtte;
 }
 
-int ConferenceConflictParams::getLowerBound() {
+int ConferenceConflictParams::getLowerBound() const {
     return lower;
 }
 
-int ConferenceConflictParams::getTwoTieredTier() {
+int ConferenceConflictParams::getTwoTieredTier() const {
     return tier;
 }
 
-float ConferenceConflictParams::getTwoTieredSplit() {
+float ConferenceConflictParams::getTwoTieredSplit() const {
     return split;
 }
 
-int ConferenceConflictParams::getOutput() {
+int ConferenceConflictParams::getOutput() const {
     return output;
 }
 
-int ConferenceConflictParams::getOutputNewLine() {
+int ConferenceConflictParams::getOutputNewLine() const {
     return outputNewLine;
 }
 
-int ConferenceConflictParams::getPBatch() {
+int ConferenceConflictParams::getPBatch() const {
     return pBatch;
 }
 
-int ConferenceConflictParams::getEBatch() {
+int ConferenceConflictParams::getEBatch() const {
     return eBatch;
 }
 
-Dist ConferenceConflictParams::getDistribution() {
+Dist ConferenceConflictParams::getDistribution() const {
     return dist;
 }
 
-ConflictHandler* ConferenceConflictParams::getConflictHandler() {
-    return conflictHandler;
+ConflictSizeConstrinat ConferenceConflictParams::getConflictSizeConstrinat() const {
+    return conflictSize;
 }
 
-bool ConferenceConflictParams::getUsedHashSet() {
+bool ConferenceConflictParams::getUsedHashSet() const {
     return useHashSet;
 }
+
+int ConferenceConflictParams::getDebugMode() const {
+    return debugMode;
+}
+
 
 
 ConferenceConflictParams::Builder* ConferenceConflictParams::Builder::setSessions(int sess) {
@@ -121,18 +126,8 @@ ConferenceConflictParams::Builder* ConferenceConflictParams::Builder::setDistrib
     return this;
 }
 
-ConferenceConflictParams::Builder* ConferenceConflictParams::Builder::setConflictHandler(ConflictSizeConstrinat size) {
-    switch(size) {
-        case ConflictSizeConstrinat::M:
-            conflictHandler = new ConflictList(sessions);
-            break;
-        case ConflictSizeConstrinat::N2:
-            conflictHandler = new ConflictGraph(sessions);
-            break;
-        default:
-            conflictHandler = new ConflictGraph(sessions);
-            break;
-    }
+ConferenceConflictParams::Builder* ConferenceConflictParams::Builder::setConflictSizeConstrinat(ConflictSizeConstrinat size) {
+    conflictSize = size;
     return this;
 }
 
@@ -140,6 +135,12 @@ ConferenceConflictParams::Builder* ConferenceConflictParams::Builder::setUseHash
     useHashSet = hash;
     return this;
 }
+
+ConferenceConflictParams::Builder* ConferenceConflictParams::Builder::setDebugMode(int debug) {
+    debugMode = debug;
+    return this;
+}
+
 
 
 const ConferenceConflictParams* ConferenceConflictParams::Builder::build() {
@@ -155,8 +156,9 @@ const ConferenceConflictParams* ConferenceConflictParams::Builder::build() {
             pBatch,
             eBatch,
             dist,
-            conflictHandler,
-            useHashSet);
+            conflictSize,
+            useHashSet,
+            debugMode);
 }
 
 
@@ -172,8 +174,9 @@ ConferenceConflictParams::ConferenceConflictParams(
         int pBtch, 
         int eBtch, 
         Dist distro, 
-        ConflictHandler* handler,
-        bool hash) {
+        ConflictSizeConstrinat size,
+        bool hash,
+        int debug) {
     sessions = sess;
     attendees = atten;
     sesPerAtte = sesAttn;
@@ -185,7 +188,8 @@ ConferenceConflictParams::ConferenceConflictParams(
     pBatch = pBtch;
     eBatch = eBtch;
     dist = distro;
-    conflictHandler = handler;
+    conflictSize = size;
     useHashSet = hash;
+    debugMode = debug;
 }
         

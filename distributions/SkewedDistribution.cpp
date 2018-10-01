@@ -14,7 +14,10 @@
 #include "SkewedDistribution.h"
 
 #include <iostream>
-SkewedDistribution::SkewedDistribution(const int lowerB, const int upperB) {
+SkewedDistribution::SkewedDistribution(
+        const int lowerB, 
+        const int upperB,
+        const int debug) {
     if(lowerB < 0) {
         throw std::invalid_argument("SkewedDistribution: Lower bound must be greater than or equal to 0");
     }
@@ -24,6 +27,7 @@ SkewedDistribution::SkewedDistribution(const int lowerB, const int upperB) {
     
     lowerBound = lowerB;
     upperBound = upperB;
+    debugMode = debug;
 }
 
 SkewedDistribution::~SkewedDistribution() {

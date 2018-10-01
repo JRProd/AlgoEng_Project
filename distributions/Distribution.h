@@ -8,6 +8,8 @@
 #ifndef DISTRIBUTION_H
 #define DISTRIBUTION_H
 
+#include <chrono>
+#include <iostream>
 #include <set>
 #include <time.h>
 
@@ -30,13 +32,16 @@ public:
      * @param size - Size of the list
      * @return vector<const int> - List of unique sessions
      */
-    std::set<int> generateSessions(const int size);
+    virtual std::set<int> generateSessions(const int size);
     
     virtual Dist whichDistribution() = 0;
     
 protected:
-    int lowerBound;
+    int lowerBound = 0;
     int upperBound;
+    
+    int debugMode = 0;
+    std::chrono::time_point<std::chrono::system_clock> start;
     
     /** Generate individual sessions based on a distribution
      * 

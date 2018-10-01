@@ -15,6 +15,7 @@
 #define CONFERENCECONFLICTDETECTOR_H
 
 #include <iostream>
+#include <chrono>
 
 #include "ConferenceConflictParams.h"
 
@@ -36,21 +37,14 @@ public:
     ConferenceConflictDetector(const int N, 
             const int S, 
             const int K, 
-            const Dist dist);
-    
-    ConferenceConflictDetector(const int N, 
-            const int S, 
-            const int K, 
             const Dist dist,
-            const int output);
+            const ConflictSizeConstrinat size);
     
     ConferenceConflictDetector(
             const ConferenceConflictParams* params);
     
-    ConferenceConflictDetector(const ConferenceConflictDetector& orig);
     virtual ~ConferenceConflictDetector();
     
-    void selectConflictSize(ConflictSizeConstrinat size);
     void generateConflicts();
     void handleResults(std::string output);
 private:
@@ -69,14 +63,21 @@ private:
     int pBatchSize = 1000;
     int eBatchSize = 1000;
     
+    int debugMode = false;
+    std::chrono::time_point<std::chrono::system_clock> start;
+    
     Dist distribution;
     Distribution* distributionGenerator;
     
+    ConflictSizeConstrinat conflictSize;
     ConflictHandler* conflictHandler;
     
     void setUpDistribution();
+    void selectConflictSize();
     
     void addConflictSet(std::set<int> set);
+    
+    void initalDebug();
 };
 
 #endif /* CONFERENCECONFLICTDETECTOR_H */

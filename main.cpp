@@ -21,11 +21,25 @@ using namespace std;
 
 #include <iostream>
 int main(int argc, char** argv) {
+    
+    const ConferenceConflictParams* params = ConferenceConflictParams::Builder()
+            .setSessions(10000)
+            ->setAttendees(10)
+            ->setSessionsPerAttendee(5000)
+            ->setDistribution(Dist::Tiered)
+            ->setShowOutput(0)
+            ->setOutputNewLine(10)
+            ->setPBatchSize(10000)
+            ->setEBatchSize(100000)
+            ->setConflictSizeConstrinat(ConflictSizeConstrinat::N2)
+            ->setDebugMode(3)
+            ->build();
 
-    ConferenceConflictDetector test(10000,100000,10000, Dist::Uniform, 10);
-    test.selectConflictSize(ConflictSizeConstrinat::N2);
-    test.generateConflicts();
-    std::cout << "Handling results" << std::endl;
-    test.handleResults("test.txt");
+    ConferenceConflictDetector conferenceDetector(params);
+    
+    conferenceDetector.generateConflicts();
+    // conferenceDetector.handleResults("test.txt");
+    
+    delete params;
 }
 
