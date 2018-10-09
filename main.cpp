@@ -23,14 +23,14 @@ using namespace std;
 int main(int argc, char** argv) {
     std::cout << "Starting" << std::endl;
     
-    ConferenceConflictParams::Builder* paramBuilders[4] = {
+    ConferenceConflictParams::Builder* paramBuilders[2] = {
         ConferenceConflictParams::Builder()
                 .setDistribution(Dist::Uniform)
                 ->setShowOutput(0)
                 ->setOutputNewLine(10)
                 ->setPBatchSize(10000)
                 ->setEBatchSize(100000)
-                ->setConflictSizeConstrinat(ConflictSizeConstrinat::N2)
+                ->setConflictSizeConstrinat(ConflictSizeConstraint::M)
                 ->setDebugMode(0),
         ConferenceConflictParams::Builder()
                 .setDistribution(Dist::Skewed)
@@ -38,36 +38,17 @@ int main(int argc, char** argv) {
                 ->setOutputNewLine(10)
                 ->setPBatchSize(10000)
                 ->setEBatchSize(100000)
-                ->setConflictSizeConstrinat(ConflictSizeConstrinat::N2)
-                ->setDebugMode(0),
-        ConferenceConflictParams::Builder()
-                .setDistribution(Dist::Tiered)
-                ->setShowOutput(0)
-                ->setOutputNewLine(10)
-                ->setPBatchSize(10000)
-                ->setEBatchSize(100000)
-                ->setConflictSizeConstrinat(ConflictSizeConstrinat::N2)
-                ->setDebugMode(0),
-        ConferenceConflictParams::Builder()
-                .setDistribution(Dist::Binomial)
-                ->setShowOutput(0)
-                ->setOutputNewLine(10)
-                ->setPBatchSize(10000)
-                ->setEBatchSize(100000)
-                ->setConflictSizeConstrinat(ConflictSizeConstrinat::N2)
+                ->setConflictSizeConstrinat(ConflictSizeConstraint::M)
                 ->setDebugMode(0)
     };
     
-    int upperAttendee[12] = {10, 50, 100, 500, 1000, 5000, 
-                             10000, 25000, 50000, 75000, 100000};
+    int upperAttendee[6] = {10, 50, 100, 500, 1000, 5000};
     
     // I believe this will be based on the O(distro)
-    int upperSessionsHigher[12] = {500, 1000, 2000, 3000, 4000, 5000, 
-                            6000, 7000, 8000, 9000, 9500, 10000};
-    int upperSessionsLower[12] = {50, 100, 200, 300, 400, 500, 
-                            600, 700, 800, 900, 950, 1000};
+    int upperSessionsHigher[6] = {500, 1000, 2000, 3000, 4000, 5000};
+    int upperSessionsLower[6] = {50, 100, 200, 300, 400, 500};
     
-    for(int i = 0; i < 4; i ++) {
+    for(int i = 0; i < 2; i ++) {
         auto builder = paramBuilders[i];
         int* upperSessions;
         if(i % 2 == 1) {
@@ -77,7 +58,7 @@ int main(int argc, char** argv) {
         }
         for(int attendee: upperAttendee){
             std::cout << attendee << ", ";
-            for(int j = 0; j < 12; j++) {
+            for(int j = 0; j < 6; j++) {
                 int session = *(upperSessions+j);
                 const ConferenceConflictParams* params = builder
                     ->setSessions(10000)

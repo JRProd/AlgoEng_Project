@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
  * File:   ConferenceConflictParam.cpp
  * Author: jake.rowland
@@ -57,86 +51,90 @@ Dist ConferenceConflictParams::getDistribution() const {
     return dist;
 }
 
-ConflictSizeConstrinat ConferenceConflictParams::getConflictSizeConstrinat() const {
+ConflictSizeConstraint ConferenceConflictParams::getConflictSizeConstrinat() 
+        const {
     return conflictSize;
-}
-
-bool ConferenceConflictParams::getUsedHashSet() const {
-    return useHashSet;
 }
 
 int ConferenceConflictParams::getDebugMode() const {
     return debugMode;
 }
 
-
-
-ConferenceConflictParams::Builder* ConferenceConflictParams::Builder::setSessions(int sess) {
+ConferenceConflictParams::Builder* 
+        ConferenceConflictParams::Builder::setSessions(int sess) {
     sessions = sess;
     return this;
 }
 
-ConferenceConflictParams::Builder* ConferenceConflictParams::Builder::setAttendees(int atte) {
+ConferenceConflictParams::Builder* 
+        ConferenceConflictParams::Builder::setAttendees(int atte) {
     attendees = atte;
     return this;
 }
 
-ConferenceConflictParams::Builder* ConferenceConflictParams::Builder::setSessionsPerAttendee(int sesAtte) {
+ConferenceConflictParams::Builder* 
+        ConferenceConflictParams::Builder::setSessionsPerAttendee(int sesAtte) {
     sesPerAtte  = sesAtte;
     return this;
 }
 
-ConferenceConflictParams::Builder* ConferenceConflictParams::Builder::setLowerBound(int low) {
+ConferenceConflictParams::Builder* 
+        ConferenceConflictParams::Builder::setLowerBound(int low) {
     lower = low;
     return this;
 }
 
-ConferenceConflictParams::Builder* ConferenceConflictParams::Builder::setTwoTieredTier(int ti) {
+ConferenceConflictParams::Builder* 
+        ConferenceConflictParams::Builder::setTwoTieredTier(int ti) {
     tier = ti;
     return this;
 }
 
-ConferenceConflictParams::Builder* ConferenceConflictParams::Builder::setTwoTieredSplit(float splt) {
+ConferenceConflictParams::Builder* 
+        ConferenceConflictParams::Builder::setTwoTieredSplit(float splt) {
     split = splt;
     return this;
 }
 
-ConferenceConflictParams::Builder* ConferenceConflictParams::Builder::setShowOutput(int out) {
+ConferenceConflictParams::Builder* 
+        ConferenceConflictParams::Builder::setShowOutput(int out) {
     output = out;
     return this;
 }
 
-ConferenceConflictParams::Builder* ConferenceConflictParams::Builder::setOutputNewLine(int outNewLine) {
+ConferenceConflictParams::Builder* 
+        ConferenceConflictParams::Builder::setOutputNewLine(int outNewLine) {
     outputNewLine = outNewLine;
     return this;
 }
 
-ConferenceConflictParams::Builder* ConferenceConflictParams::Builder::setPBatchSize(int pBtch) {
+ConferenceConflictParams::Builder* 
+        ConferenceConflictParams::Builder::setPBatchSize(int pBtch) {
     pBatch = pBtch;
     return this;
 }
 
-ConferenceConflictParams::Builder* ConferenceConflictParams::Builder::setEBatchSize(int eBtch) {
+ConferenceConflictParams::Builder* 
+        ConferenceConflictParams::Builder::setEBatchSize(int eBtch) {
     eBatch = eBtch;
     return this;
 }
 
-ConferenceConflictParams::Builder* ConferenceConflictParams::Builder::setDistribution(Dist distro) {
+ConferenceConflictParams::Builder* 
+        ConferenceConflictParams::Builder::setDistribution(Dist distro) {
     dist = distro;
     return this;
 }
 
-ConferenceConflictParams::Builder* ConferenceConflictParams::Builder::setConflictSizeConstrinat(ConflictSizeConstrinat size) {
+ConferenceConflictParams::Builder* 
+        ConferenceConflictParams::Builder::setConflictSizeConstrinat(
+        ConflictSizeConstraint size) {
     conflictSize = size;
     return this;
 }
 
-ConferenceConflictParams::Builder* ConferenceConflictParams::Builder::setUseHashSet(bool hash) {
-    useHashSet = hash;
-    return this;
-}
-
-ConferenceConflictParams::Builder* ConferenceConflictParams::Builder::setDebugMode(int debug) {
+ConferenceConflictParams::Builder* 
+        ConferenceConflictParams::Builder::setDebugMode(int debug) {
     debugMode = debug;
     return this;
 }
@@ -157,7 +155,6 @@ const ConferenceConflictParams* ConferenceConflictParams::Builder::build() {
             eBatch,
             dist,
             conflictSize,
-            useHashSet,
             debugMode);
 }
 
@@ -174,8 +171,7 @@ ConferenceConflictParams::ConferenceConflictParams(
         int pBtch, 
         int eBtch, 
         Dist distro, 
-        ConflictSizeConstrinat size,
-        bool hash,
+        ConflictSizeConstraint size,
         int debug) {
     sessions = sess;
     attendees = atten;
@@ -189,7 +185,5 @@ ConferenceConflictParams::ConferenceConflictParams(
     eBatch = eBtch;
     dist = distro;
     conflictSize = size;
-    useHashSet = hash;
     debugMode = debug;
 }
-        

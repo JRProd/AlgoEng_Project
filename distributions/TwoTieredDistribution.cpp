@@ -20,16 +20,20 @@ TwoTieredDistribution::TwoTieredDistribution(
         const int upperB,
         const int debug) {
     if(lowerB < 0) {
-        throw std::invalid_argument("TwoTieredDistribution: Lower bound must be greater than or equal to 0");
+        throw std::invalid_argument(
+                "TwoTieredDistribution: Lower bound must >= to 0");
     }
     if(upperB <= lowerB) {
-        throw std::invalid_argument("TwoTieredDistribution: Upper bound must be strictly greater than the lower bound");
+        throw std::invalid_argument(
+                "TwoTieredDistribution: Upper bound must be > lower bound");
     }
     if(tr <= lowerB || tr >= upperB) {
-        throw std::invalid_argument("TwoTieredDistribution: Tier must be strictly between the lower bound and upper bound");
+        throw std::invalid_argument(
+                "TwoTieredDistribution: lower bound < tier < upperBound");
     }
     if(splt < 0 || splt > 1) {
-        throw std::invalid_argument("TwoTieredDistribution: Split must be a percentage [0,1]");
+        throw std::invalid_argument(
+                "TwoTieredDistribution: Split must be a percentage [0,1]");
     }
     
     lowerBound = lowerB;
@@ -43,7 +47,6 @@ TwoTieredDistribution::TwoTieredDistribution(
 }
 
 TwoTieredDistribution::~TwoTieredDistribution() {
-
 }
 
 
@@ -68,11 +71,13 @@ const int TwoTieredDistribution::generateSession() {
 
 std::set<int> TwoTieredDistribution::generateSessions(const int size) {
         if(debugMode == 1) {
-            std::cout << "Distribution::generateSessions: Starting" << std::endl;
+            std::cout << "Distribution::generateSessions: Starting" 
+                    << std::endl;
         }
     
     if(size > upperBound - lowerBound) {
-        throw std::invalid_argument("Distribution::generateSessions: Attempting to generate to many unique values");
+        throw std::invalid_argument("Distribution::generateSessions:" <<
+                        " Attempting to generate to many unique values");
     }
     
     std::set<int> sessions;
@@ -80,7 +85,8 @@ std::set<int> TwoTieredDistribution::generateSessions(const int size) {
     int startingUpperBound = upperBound;
     
             if(debugMode >= 2) {
-                std::cout << "Distribution::generateSessions: Starting set creation" << std::endl;
+                std::cout << "Distribution::generateSessions:" <<
+                        " Starting set creation" << std::endl;
                 start = std::chrono::system_clock::now();
             }
                 if(debugMode >= 3) {
@@ -95,7 +101,8 @@ std::set<int> TwoTieredDistribution::generateSessions(const int size) {
         if(session == lowerBound) {
             lowerBound = lowerBound+1;
                         if(debugMode >= 3) {
-                            std::cout << lowerBound << " -- " << upperBound << std::endl;
+                            std::cout << lowerBound << " -- " << upperBound 
+                                    << std::endl;
                         }
             
             // If the lowerBound is now at the tier, switch to uniform RNG
@@ -106,17 +113,20 @@ std::set<int> TwoTieredDistribution::generateSessions(const int size) {
         if(session == upperBound-1) {
             upperBound = upperBound-1;
                         if(debugMode >= 3) {
-                            std::cout << lowerBound << " -- " << upperBound << std::endl;
+                            std::cout << lowerBound << " -- " << upperBound 
+                                    << std::endl;
                         }
         }
         sessions.insert(session);
     }
     
             if (debugMode >= 2 ) {
-                std::cout << "Distribution::generateSessions: Finished set creation in ";
+                std::cout << "Distribution::generateSessions:" <<
+                        " Finished set creation in ";
                 auto end = std::chrono::system_clock::now() - start;
                 long duration = 
-                    std::chrono::duration_cast<std::chrono::milliseconds>(end).count();
+                    std::chrono::duration_cast<std::chrono::milliseconds>(end)
+                    .count();
                 std::cout << duration  << "ms" << std::endl;
             }
     
@@ -124,7 +134,8 @@ std::set<int> TwoTieredDistribution::generateSessions(const int size) {
     upperBound = startingUpperBound;
     
         if (debugMode == 1) {
-            std::cout << "Distribution::generateSessions: Finished" << std::endl;;
+            std::cout << "Distribution::generateSessions:" <<
+                        " Finished" << std::endl;
         }
     return sessions;
 }

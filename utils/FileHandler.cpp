@@ -26,7 +26,6 @@ void FileHandler::closeFile() {
     file.close();
 }
 
-
 bool FileHandler::write(const std::string key, const std::string value) {
     if(!canWrite()) {
         return false;
@@ -54,7 +53,8 @@ bool FileHandler::writeList(
         return false;
     }
     if(batchSize < 1) {
-        throw std::invalid_argument("FileHandler::writeList: Batch size must be strictly greater than zero");
+        throw std::invalid_argument(
+                "FileHandler::writeList: Batch size must be > zero");
     }
     
     file << key << std::endl;

@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
  * File:   ConferenceConflictParam.h
  * Author: jake.rowland
@@ -20,6 +14,7 @@
 
 class ConferenceConflictParams {
 public:
+    // Getter methods
     int getSessions() const;
     int getAttendees() const;
     int getSessionsPerAttende() const;
@@ -31,9 +26,10 @@ public:
     int getPBatch() const;
     int getEBatch() const;
     Dist getDistribution()const;
-    ConflictSizeConstrinat getConflictSizeConstrinat() const;
-    bool getUsedHashSet() const;
+    ConflictSizeConstraint getConflictSizeConstrinat() const;
     int getDebugMode() const;
+    
+    // Builder construct
     class Builder {
     public:
         Builder* setSessions(int sess);
@@ -47,11 +43,11 @@ public:
         Builder* setPBatchSize(int pBtch);
         Builder* setEBatchSize(int eBtch);
         Builder* setDistribution(Dist distro);
-        Builder* setConflictSizeConstrinat(ConflictSizeConstrinat size);
-        Builder* setUseHashSet(bool hash);
+        Builder* setConflictSizeConstrinat(ConflictSizeConstraint size);
         Builder* setDebugMode(int debug);
         const ConferenceConflictParams* build();
     private:
+        // Default values for the parameters
         int sessions = 1000;
         int attendees = 100;
         int sesPerAtte = 100;
@@ -63,8 +59,7 @@ public:
         int pBatch = 1000;
         int eBatch = 5000;
         Dist dist = Dist::Uniform;
-        ConflictSizeConstrinat conflictSize;
-        bool useHashSet = false;
+        ConflictSizeConstraint conflictSize;
         int debugMode = 0;
     };
 private:
@@ -79,10 +74,10 @@ private:
     int pBatch;
     int eBatch;
     Dist dist;
-    ConflictSizeConstrinat conflictSize;
-    bool useHashSet;
+    ConflictSizeConstraint conflictSize;
     int debugMode;
     
+    // Private constructor
     ConferenceConflictParams(
             int sess,
             int atten,
@@ -95,10 +90,8 @@ private:
             int pBtch,
             int eBtch,
             Dist distro,
-            ConflictSizeConstrinat size,
-            bool hash,
+            ConflictSizeConstraint size,
             int debug);
 };
 
 #endif /* CONFERENCECONFLICTPARAM_H */
-

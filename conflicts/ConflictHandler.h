@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
  * File:   ConflictHandler.h
  * Author: jake.rowland
@@ -19,7 +13,7 @@
 
 #include "../utils/MathUtils.h"
 
-enum class ConflictSizeConstrinat {
+enum class ConflictSizeConstraint {
     M,
     N2
 };
@@ -75,7 +69,7 @@ public:
      */
     virtual void addConflict(std::pair<int,int>) = 0;
     
-    virtual ConflictSizeConstrinat whatSize() = 0;
+    virtual ConflictSizeConstraint whatSize() = 0;
     
 protected:
     int uniqueConflictCount;
@@ -84,4 +78,3 @@ protected:
 };
 
 #endif /* CONFLICTHANDLER_H */
-

@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
  * File:   BinomialDistribution.cpp
  * Author: jake.rowland
@@ -18,10 +12,12 @@ BinomialDistribution::BinomialDistribution(
         const int upperB,
         const int debug) {
     if(lowerB < 0) {
-        throw std::invalid_argument("BinomialDistribution: Lower bound must be greater than or equal to 0");
+        throw std::invalid_argument(
+                "BinomialDistribution: Lower bound must be >= to 0");
     }
     if(upperB <= lowerB) {
-        throw std::invalid_argument("BinomialDistribution: Upper bound must be strictly greater than the lower bound");
+        throw std::invalid_argument(
+                "BinomialDistribution: Upper bound must be > lower bound");
     }
     
     lowerBound = lowerB;
@@ -44,4 +40,3 @@ const int BinomialDistribution::generateSession() {
             lowerBound, 
             upperBound);
 }
-

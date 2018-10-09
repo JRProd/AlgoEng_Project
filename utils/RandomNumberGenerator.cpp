@@ -1,13 +1,22 @@
- #include "RandomNumberGenerator.h"
+/* 
+ * File:   RandomNumberGenerator.h
+ * Author: jake.rowland
+ *
+ * Created on September 10, 2018, 1:15 PM
+ */
+
+#include "RandomNumberGenerator.h"
 
 int RandomNumberGenerator::UniformRandomGenerator(
         const int lowerBound, 
         const int upperBound) {
     if(lowerBound < 0) {
-        throw std::invalid_argument("UniformRandomGenerator: Lower bound must be greater than or equal to 0");
+        throw std::invalid_argument(
+                "UniformRandomGenerator: Lower bound must >= to 0");
     }
     if(upperBound <= lowerBound) {
-        throw std::invalid_argument("UniformRandomGenerator: Upper bound must be strictly greater than the lower bound");
+        throw std::invalid_argument(
+                "UniformRandomGenerator: Upper bound must be > lower bound");
     }
     
     return randomNumber(lowerBound, upperBound);
@@ -17,10 +26,12 @@ int RandomNumberGenerator::SkewedRandomGenerator(
         const int lowerBound, 
         const int upperBound) {
     if(lowerBound < 0) {
-        throw std::invalid_argument("SkewedRandomGenerator: Lower bound must be greater than or equal to 0");
+        throw std::invalid_argument(
+                "SkewedRandomGenerator: Lower bound must be >= to 0");
     }
     if(upperBound <= lowerBound) {
-        throw std::invalid_argument("SkewedRandomGenerator: Upper bound must be strictly greater than the lower bound");
+        throw std::invalid_argument(
+                "SkewedRandomGenerator: Upper bound must be > the lower bound");
     }
     
     // Inclusive range
@@ -48,16 +59,20 @@ int RandomNumberGenerator::TwoTieredRandomGenerator(
         const float split, 
         const int upperBound) {
     if(lowerBound < 0) {
-        throw std::invalid_argument("TwoTieredRandomGenerator: Lower bound must be greater than or equal to 0");
+        throw std::invalid_argument(
+                "TwoTieredRandomGenerator: Lower bound must be >= to 0");
     }
     if(upperBound <= lowerBound) {
-        throw std::invalid_argument("TwoTieredRandomGenerator: Upper bound must be strictly greater than the lower bound");
+        throw std::invalid_argument(
+                "TwoTieredRandomGenerator: Upper bound must be >  lower bound");
     }
     if(tier <= lowerBound || tier >= upperBound) {
-        throw std::invalid_argument("TwoTieredRandomGenerator: Tier must be strictly between the lower bound and upper bound");
+        throw std::invalid_argument(
+                "TwoTieredRandomGenerator: lower bound < tier < upper bound");
     }
     if(split < 0 || split > 1) {
-        throw std::invalid_argument("TwoTieredRandomGenerator: Split must be a percentage [0,1]");
+        throw std::invalid_argument(
+                "TwoTieredRandomGenerator: Split must be a percentage [0,1]");
     }
     
     // Gets a number between [0,1)
@@ -82,10 +97,12 @@ int RandomNumberGenerator::BinomialRandomGenerator(
         const int lowerBound, 
         const int upperBound) {
     if(lowerBound < 0) {
-        throw std::invalid_argument("BinomialRandomGenerator: Lower bound must be greater than or equal to 0");
+        throw std::invalid_argument(
+                "BinomialRandomGenerator: Lower bound must be >= to 0");
     }
     if(upperBound <= lowerBound) {
-        throw std::invalid_argument("BinomialRandomGenerator: Upper bound must be strictly greater than the lower bound");
+        throw std::invalid_argument(
+                "BinomialRandomGenerator: Upper bound must be > lower bound");
     }
     
     int newLower = lowerBound/2;

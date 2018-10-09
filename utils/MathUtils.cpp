@@ -9,14 +9,14 @@
 
 unsigned long MathUtils::factorial(const int n) {
     if(n < 0) {
-        throw std::invalid_argument("MathUtils::factorial: N must be non-negative");
+        throw std::invalid_argument("MathUtils::factorial: N >= 0");
     }
     return partialFactorial(n, 1);
 }
 
 unsigned long MathUtils::choose(const int n, const int k) {
     if (n < k) {
-        throw std::invalid_argument("MathUtils::choose: N must be at least as large as K");
+        throw std::invalid_argument("MathUtils::choose: N >= K");
     }
     unsigned long top = partialFactorial(n,n-k);
     unsigned long bottom = factorial(k);
@@ -26,7 +26,7 @@ unsigned long MathUtils::choose(const int n, const int k) {
 
 unsigned long MathUtils::pairs(const int n) {
     if (n < 2) {
-        throw std::invalid_argument("MathUtils::pairs: N must be at least as large as 2");
+        throw std::invalid_argument("MathUtils::pairs: N >= 2");
     }
     return choose(n, 2);
 }

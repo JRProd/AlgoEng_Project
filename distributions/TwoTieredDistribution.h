@@ -18,6 +18,15 @@
 
 class TwoTieredDistribution: public Distribution {
 public:
+    
+    /** Two Tiered Distribution
+     * 
+     * @param lowerB - Lower bound of the distribution
+     * @param tr - Where the tier is split
+     * @param splt - The split percentage
+     * @param upperB - Upper bound of the distribution
+     * @param debug - Debug Mode
+     */
     TwoTieredDistribution(
             const int lowerB,
             const int tr,
@@ -26,15 +35,30 @@ public:
             const int debug);
     virtual ~TwoTieredDistribution();
     
+    /** Generate a unique list of sessions, can flip between two tiered and 
+     *   Uniform RNG
+     * 
+     * @param size - Size of the list
+     * @return vector<const int> - List of unique sessions
+     */
     virtual std::set<int> generateSessions(const int size) override;
     
+    /** What distribution is this
+     * 
+     * @return Dist - type of distribution
+     */
     Dist whichDistribution() override;
 private:
     int tier;
     float split;
     
+    // If the tier should be used or just uniform RNG
     bool useTieredRng;
     
+    /** The a two tiered session
+     * 
+     * @return int - Next session chosen
+     */
     const int generateSession() override;
 };
 

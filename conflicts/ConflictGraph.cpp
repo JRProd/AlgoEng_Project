@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
  * File:   ConflictGraph.cpp
  * Author: jake.rowland
@@ -77,8 +71,8 @@ void ConflictGraph::addConflict(std::pair<int, int> pair) {
     }
 }
 
-ConflictSizeConstrinat ConflictGraph::whatSize() {
-    return ConflictSizeConstrinat::N2;
+ConflictSizeConstraint ConflictGraph::whatSize() {
+    return ConflictSizeConstraint::N2;
 }
 
 
@@ -92,8 +86,3 @@ void ConflictGraph::buildGraph() {
         }
     }
 }
-
-
-
-
-

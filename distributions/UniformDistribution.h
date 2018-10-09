@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
  * File:   UniformDistribution.h
  * Author: jake.rowland
@@ -18,13 +12,28 @@
 
 class UniformDistribution: public Distribution {
 public:
+    
+    /** Uniform Distribution
+     * 
+     * @param lowerB - Lower bound of the distribution
+     * @param upperB - Upper bound of the distribution
+     * @param debug - Debug mode
+     */
     UniformDistribution(const int lowerB, const int upperB, const int debug);
     virtual ~UniformDistribution();
     
+    /** What distribution is this
+     * 
+     * @return Dist - type of distribution
+     */
     Dist whichDistribution() override;
 protected:
+    
+    /** The a uniform session
+     * 
+     * @return int - Next session chosen
+     */
     const int generateSession() override;    
 };
 
 #endif /* UNIFORMDISTRIBUTION_H */
-

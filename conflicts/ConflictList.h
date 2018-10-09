@@ -35,20 +35,11 @@ public:
      */
     void addConflict(std::pair<int,int> pair) override;
     
-    ConflictSizeConstrinat whatSize() override;
+    ConflictSizeConstraint whatSize() override;
 private:
-    
     std::set<std::pair<int,int>> pairs;
     
     int N;
-    
-    /** Checks if the value is in the list
-     * 
-     * @param pair - Value to look for
-     * @return bool - If found
-     */
-    bool isInSet(std::pair<int, int> pair);
 };
 
 #endif /* CONFLICTLIST_H */
-

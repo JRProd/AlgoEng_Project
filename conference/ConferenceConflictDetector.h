@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
  * File:   ConferenceConflictDetector.h
  * Author: jake.rowland
@@ -34,24 +28,46 @@
 
 class ConferenceConflictDetector {
 public:
+    /** Constructor for the Conference Conflict Detector
+     * 
+     * @param N - Number of Sessions
+     * @param S - Number of Attendees
+     * @param K - Number of Sessions per Attendee
+     * @param dist - Distribution used
+     * @param size - Size constraint used
+     */
     ConferenceConflictDetector(const int N, 
             const int S, 
             const int K, 
             const Dist dist,
-            const ConflictSizeConstrinat size);
+            const ConflictSizeConstraint size);
     
+    /** Parameterized Constructor 
+     * 
+     * @param params - Parameters, allows much more control over constants
+     */
     ConferenceConflictDetector(
             const ConferenceConflictParams* params);
     
     virtual ~ConferenceConflictDetector();
     
+    /** Generates the sessions per each attendee and adds them to the conflict
+     *   handler
+     */
     void generateConflicts();
+    
+    /** Writes the results to an output file
+     * 
+     * @param output - Filename
+     */
     void handleResults(std::string output);
 private:
+    // 
     int sessions;
     int attendees;
     int sesPerAtte;
     
+    // Parameterized values
     int lowerBound = 0;
     
     int twoTieredTier = 100;
@@ -66,19 +82,23 @@ private:
     int debugMode = false;
     std::chrono::time_point<std::chrono::system_clock> start;
     
+    // Distribution
     Dist distribution;
     Distribution* distributionGenerator;
     
-    ConflictSizeConstrinat conflictSize;
+    // Size Constraint 
+    ConflictSizeConstraint conflictSize;
     ConflictHandler* conflictHandler;
     
+    // Init methods  
     void setUpDistribution();
     void selectConflictSize();
     
+    // Adds a set to the conflict handler
     void addConflictSet(std::set<int> set);
     
+    // Debug Output
     void initalDebug();
 };
 
 #endif /* CONFERENCECONFLICTDETECTOR_H */
-

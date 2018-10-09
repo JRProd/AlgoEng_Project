@@ -53,28 +53,23 @@ void ConflictList::addConflict(std::pair<int, int> pair) {
     if(pair.first == pair.second) {
         return;
     }
-    
-    if(!isInSet(pair)) {
-        
-        pairs.insert(pair);
-        
-        std::pair <int,int> flipedPair = std::make_pair(
-                pair.second, 
-                pair.first);
-        
-        pairs.insert(flipedPair);
-        
-        uniqueConflictCount++;
+
+    auto success = pairs.insert(pair);
+
+    // If the insert was not successful (already inserted) break;
+    if(success.second != true) {
+        return;
     }
+
+    std::pair <int,int> flipedPair = std::make_pair(
+            pair.second, 
+            pair.first);
+
+    pairs.insert(flipedPair);
+
+    uniqueConflictCount++;
 }
 
-ConflictSizeConstrinat ConflictList::whatSize() {
-    return ConflictSizeConstrinat::M;
-}
-
-bool ConflictList::isInSet(std::pair<int, int> pair) {
-        if(pairs.find(pair) == pairs.end()) {
-            return false;
-        }
-        return true;
+ConflictSizeConstraint ConflictList::whatSize() {
+    return ConflictSizeConstraint::M;
 }

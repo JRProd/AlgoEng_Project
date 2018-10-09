@@ -34,6 +34,10 @@ public:
      */
     virtual std::set<int> generateSessions(const int size);
     
+    /** Which distribution is this
+     * 
+     * @return Dist - distribution
+     */
     virtual Dist whichDistribution() = 0;
     
 protected:
