@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
  * File:   MathUtils.cpp
  * Author: jake.rowland
@@ -46,6 +40,3 @@ unsigned long MathUtils::partialFactorial(const int n, const int s) {
     }
     return n * partialFactorial(n-1, s);
 }
-
-
-

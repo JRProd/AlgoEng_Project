@@ -16,12 +16,9 @@ ConflictList::ConflictList(int size) {
     uniqueConflictCount = 0;
     
     maxConflict = MathUtils::pairs(size);
-    
-    list = nullptr;
 }
 
 ConflictList::~ConflictList() {
-    delete list;
 }
 
 int** ConflictList::peArray() {
@@ -33,17 +30,12 @@ int** ConflictList::peArray() {
     int eArrayLoc = 0;
     for(int i = 0; i < N; i++ ) {
         *(pArray+i) = eArrayLoc;
-        // For each possible conflict of that session
-        ConflictList::Node* root = list;
-        while(root != nullptr) {
-            // If the first element of the pair is equal to the current element
-            //  adding to the pArray
-            std::pair<int, int> pair = root->getData();
+        
+        for(std::pair<int,int> pair: pairs) {
             if(pair.first == i) {
                 *(eArray+eArrayLoc) = pair.second;
                 eArrayLoc++;
             }
-            root = root->getNext();
         }
         
         if(*(pArray+i) == eArrayLoc) {
@@ -61,17 +53,16 @@ void ConflictList::addConflict(std::pair<int, int> pair) {
     if(pair.first == pair.second) {
         return;
     }
-    if(!isInList(pair)) {
-        // Makes a node with (a,b)
-        Node* node = new Node(pair, list);
-        // Makes a node with (b,a)
+    
+    if(!isInSet(pair)) {
+        
+        pairs.insert(pair);
+        
         std::pair <int,int> flipedPair = std::make_pair(
                 pair.second, 
                 pair.first);
         
-         Node* nodeSwap = new Node(flipedPair, node);
-        
-        list = nodeSwap;
+        pairs.insert(flipedPair);
         
         uniqueConflictCount++;
     }
@@ -81,61 +72,9 @@ ConflictSizeConstrinat ConflictList::whatSize() {
     return ConflictSizeConstrinat::M;
 }
 
-
-#include <iostream>
-bool ConflictList::isInList(std::pair<int, int> pair) {
-    // If there is no list currently
-    if(list == nullptr) {
-        return false;
-    }
-    
-    if(USE_HASH_SET) {
-        // If not in the set
-        if(pairsAdded.find(pair) == pairsAdded.end()) {
-            pairsAdded.insert(pair);
-            return true;
+bool ConflictList::isInSet(std::pair<int, int> pair) {
+        if(pairs.find(pair) == pairs.end()) {
+            return false;
         }
-        return false;
-    } else {
-        ConflictList::Node* root = list;
-            while(root != nullptr) {
-                // Check if (a,b) is equal to (a,b) or (b,a)
-                if(root->getData() == pair ) {
-                    return true;
-                }
-                root = root->getNext();
-            }
-        return false;
-    }
+        return true;
 }
-
-ConflictList::Node::Node(std::pair<int,int> data, Node* next) {
-    pair = data;
-    nextNode = next;
-}
-
-ConflictList::Node::~Node() {
-    if(nextNode != nullptr) {
-        delete nextNode;
-    }
-}
-
-std::pair<int,int> ConflictList::Node::getData() {
-    return pair;
-}
-
-bool ConflictList::Node::hasNext() {
-    return nextNode != nullptr;
-}
-
-ConflictList::Node* ConflictList::Node::getNext() {
-    return nextNode;
-}
-
-void ConflictList::Node::setNext(Node* next) {
-    nextNode = next;
-}
-
-
-
-

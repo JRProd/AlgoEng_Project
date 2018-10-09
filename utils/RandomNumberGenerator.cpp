@@ -1,4 +1,4 @@
-#include "RandomNumberGenerator.h"
+ #include "RandomNumberGenerator.h"
 
 int RandomNumberGenerator::UniformRandomGenerator(
         const int lowerBound, 

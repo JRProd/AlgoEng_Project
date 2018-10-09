@@ -7,10 +7,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/Users/jake.rowland/Algorithm%20Engineering%20Project/AlgoEng_Project/utils/FileHandler.h</file>
+            <file>file:/Users/jake.rowland/Algorithm%20Engineering%20Project/AlgoEng_Project/utils/FileHandler.cpp</file>
             <file>file:/Users/jake.rowland/Algorithm%20Engineering%20Project/AlgoEng_Project/main.cpp</file>
             <file>file:/Users/jake.rowland/Algorithm%20Engineering%20Project/AlgoEng_Project/conference/ConferenceConflictDetector.h</file>
+            <file>file:/Users/jake.rowland/Algorithm%20Engineering%20Project/AlgoEng_Project/utils/RandomNumberGenerator.cpp</file>
             <file>file:/Users/jake.rowland/Algorithm%20Engineering%20Project/AlgoEng_Project/conference/ConferenceConflictDetector.cpp</file>
+            <file>file:/Users/jake.rowland/Algorithm%20Engineering%20Project/AlgoEng_Project/utils/MathUtils.h</file>
             <file>file:/Users/jake.rowland/Algorithm%20Engineering%20Project/AlgoEng_Project/conference/ConferenceConflictParams.h</file>
+            <file>file:/Users/jake.rowland/Algorithm%20Engineering%20Project/AlgoEng_Project/utils/MathUtils.cpp</file>
+            <file>file:/Users/jake.rowland/Algorithm%20Engineering%20Project/AlgoEng_Project/utils/RandomNumberGenerator.h</file>
             <file>file:/Users/jake.rowland/Algorithm%20Engineering%20Project/AlgoEng_Project/conference/ConferenceConflictParams.cpp</file>
         </group>
     </open-files>

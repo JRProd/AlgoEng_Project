@@ -43,7 +43,7 @@ void DistributionUnitTest::tearDown() {
 
 void DistributionUnitTest::testUniformDistribution() {
     std::cout << "###### Starting Uniform Distribution Test ######" << std::endl;
-    Distribution* uniformDistro = new UniformDistribution(LOWER_BOUND, UPPER_BOUND);
+    Distribution* uniformDistro = new UniformDistribution(LOWER_BOUND, UPPER_BOUND, 0);
     std::set<int> uniformSet = uniformDistro->generateSessions(
             UNIFORM_DISTRO_SIZE);
     
@@ -59,7 +59,7 @@ void DistributionUnitTest::testUniformDistribution() {
 
 void DistributionUnitTest::testSkewedDistribution() {
     std::cout << "###### Starting Skewed Distribution Test ######" << std::endl;
-    Distribution* skewedDistro = new SkewedDistribution(LOWER_BOUND, UPPER_BOUND);
+    Distribution* skewedDistro = new SkewedDistribution(LOWER_BOUND, UPPER_BOUND, 0);
     std::set<int> skewedSet = skewedDistro->generateSessions(
             SKEWED_DISTRO_SIZE);
     
@@ -75,7 +75,7 @@ void DistributionUnitTest::testSkewedDistribution() {
 
 void DistributionUnitTest::testTwoTieredDistribution() {
     std::cout << "###### Starting Two Tiered Distribution Test ######" << std::endl;
-    Distribution* twoTieredDistro = new TwoTieredDistribution(LOWER_BOUND, TIER, SPLIT, UPPER_BOUND);
+    Distribution* twoTieredDistro = new TwoTieredDistribution(LOWER_BOUND, TIER, SPLIT, UPPER_BOUND, 0);
     std::set<int> twoTieredSet = twoTieredDistro->generateSessions(
             TWO_TIERED_DISTRO_SIZE);
     
@@ -91,7 +91,7 @@ void DistributionUnitTest::testTwoTieredDistribution() {
 
 void DistributionUnitTest::testBinomialDistribution() {
     std::cout << "###### Starting Binomial Distribution Test ######" << std::endl;
-    Distribution* binomialDistro = new BinomialDistribution(LOWER_BOUND, UPPER_BOUND);
+    Distribution* binomialDistro = new BinomialDistribution(LOWER_BOUND, UPPER_BOUND, 0);
     std::set<int> binomialSet = binomialDistro->generateSessions(
             BINOMIAL_DISTRO_SIZE);
     

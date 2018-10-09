@@ -50,30 +50,6 @@ void MathUtilUnitTest::testFactorial3() {
     CPPUNIT_ASSERT(factorial == 6227020800L);
 }
 
-void MathUtilUnitTest::testPartialFactorial1() {
-    int number = 1;
-    int partial = 1;
-    unsigned long long factorial = MathUtils::partialFactorial(number, partial);
-    
-    CPPUNIT_ASSERT(factorial == 1);
-}
-
-void MathUtilUnitTest::testPartialFactorial2() {
-    int number = 5;
-    int partial = 3;
-    unsigned long factorial = MathUtils::partialFactorial(number, partial);
-    
-    CPPUNIT_ASSERT(factorial == 20);
-}
-
-void MathUtilUnitTest::testPartialFactorial3() {
-    int number = 13;
-    int partial = 7;
-    unsigned long factorial = MathUtils::partialFactorial(number, partial);
-    
-    CPPUNIT_ASSERT(factorial == 1235520);
-}
-
 void MathUtilUnitTest::testChoose1() {
     int n = 4;
     int k = 1;

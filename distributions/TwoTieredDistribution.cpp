@@ -67,9 +67,9 @@ const int TwoTieredDistribution::generateSession() {
 }
 
 std::set<int> TwoTieredDistribution::generateSessions(const int size) {
-    if(debugMode == 1) {
-        std::cout << "Distribution::generateSessions: Starting" << std::endl;
-    }
+        if(debugMode == 1) {
+            std::cout << "Distribution::generateSessions: Starting" << std::endl;
+        }
     
     if(size > upperBound - lowerBound) {
         throw std::invalid_argument("Distribution::generateSessions: Attempting to generate to many unique values");
@@ -79,13 +79,13 @@ std::set<int> TwoTieredDistribution::generateSessions(const int size) {
     int startingLowerBound = lowerBound;
     int startingUpperBound = upperBound;
     
-    if(debugMode >= 2) {
-        std::cout << "Distribution::generateSessions: Starting set creation" << std::endl;
-        start = std::chrono::system_clock::now();
-    }
-    if(debugMode == 3) {
-        std::cout << "Lower -- Upper" << std::endl;
-    }
+            if(debugMode >= 2) {
+                std::cout << "Distribution::generateSessions: Starting set creation" << std::endl;
+                start = std::chrono::system_clock::now();
+            }
+                if(debugMode >= 3) {
+                    std::cout << "Lower -- Upper" << std::endl;
+                }
     
     // If all the upper tier have been choose, no more reason to use Tiered RNG
     //  Reset each time generating new sessions.
@@ -94,9 +94,9 @@ std::set<int> TwoTieredDistribution::generateSessions(const int size) {
         int session = generateSession();
         if(session == lowerBound) {
             lowerBound = lowerBound+1;
-            if(debugMode == 3) {
-                std::cout << lowerBound << " -- " << upperBound << std::endl;
-            }
+                        if(debugMode >= 3) {
+                            std::cout << lowerBound << " -- " << upperBound << std::endl;
+                        }
             
             // If the lowerBound is now at the tier, switch to uniform RNG
             if(tier == lowerBound) {
@@ -105,27 +105,27 @@ std::set<int> TwoTieredDistribution::generateSessions(const int size) {
         }
         if(session == upperBound-1) {
             upperBound = upperBound-1;
-            if(debugMode == 3) {
-                std::cout << lowerBound << " -- " << upperBound << std::endl;
-            }
+                        if(debugMode >= 3) {
+                            std::cout << lowerBound << " -- " << upperBound << std::endl;
+                        }
         }
         sessions.insert(session);
     }
-    if (debugMode >= 2 ) {
-        std::cout << "Distribution::generateSessions: Finished set creation in ";
-        auto end = std::chrono::system_clock::now() - start;
-        long duration = 
-            std::chrono::duration_cast<std::chrono::milliseconds>(end).count();
-        std::cout << duration  << "ms" << std::endl;
-    }
+    
+            if (debugMode >= 2 ) {
+                std::cout << "Distribution::generateSessions: Finished set creation in ";
+                auto end = std::chrono::system_clock::now() - start;
+                long duration = 
+                    std::chrono::duration_cast<std::chrono::milliseconds>(end).count();
+                std::cout << duration  << "ms" << std::endl;
+            }
     
     lowerBound = startingLowerBound;
     upperBound = startingUpperBound;
     
-    
-    if (debugMode == 1) {
-        std::cout << "Distribution::generateSessions: Finished" << std::endl;;
-    }
+        if (debugMode == 1) {
+            std::cout << "Distribution::generateSessions: Finished" << std::endl;;
+        }
     return sessions;
 }
 

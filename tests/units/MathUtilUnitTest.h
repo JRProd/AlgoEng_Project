@@ -24,9 +24,6 @@ class MathUtilUnitTest : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST(testFactorial1);
     CPPUNIT_TEST(testFactorial2);
     CPPUNIT_TEST(testFactorial3);
-    CPPUNIT_TEST(testPartialFactorial1);
-    CPPUNIT_TEST(testPartialFactorial2);
-    CPPUNIT_TEST(testPartialFactorial3);
     CPPUNIT_TEST(testChoose1);
     CPPUNIT_TEST(testChoose2);
     CPPUNIT_TEST(testChoose3);
@@ -46,9 +43,6 @@ private:
     void testFactorial1();
     void testFactorial2();
     void testFactorial3();
-    void testPartialFactorial1();
-    void testPartialFactorial2();
-    void testPartialFactorial3();
     void testChoose1();
     void testChoose2();
     void testChoose3();
