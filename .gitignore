@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+
+# Personal
+.DS_Store
+build/
+dist/
+nbproject/
+.dep.inc
+**.swp
+**.txt
