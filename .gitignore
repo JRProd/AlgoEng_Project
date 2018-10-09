@@ -31,6 +31,7 @@
 *.out
 *.app
 
+<<<<<<< HEAD
 # Personal ignores
 .dep.inc
 .DS_Store
@@ -38,3 +39,13 @@
 build
 dist
 nbproject
+=======
+# Personal
+.DS_Store
+build/
+dist/
+nbproject/
+.dep.inc
+**.swp
+**.txt
+>>>>>>> 5a461ff383a214842ec38f25d45d82b59f425396
