@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+
+# Personal ignores
+.dep.inc
+.DS_Store
+*.txt
+build
+dist
+nbproject
