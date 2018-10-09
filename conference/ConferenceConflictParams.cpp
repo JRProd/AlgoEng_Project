@@ -56,10 +56,6 @@ ConflictSizeConstraint ConferenceConflictParams::getConflictSizeConstrinat()
     return conflictSize;
 }
 
-int ConferenceConflictParams::getDebugMode() const {
-    return debugMode;
-}
-
 ConferenceConflictParams::Builder* 
         ConferenceConflictParams::Builder::setSessions(int sess) {
     sessions = sess;
@@ -133,14 +129,6 @@ ConferenceConflictParams::Builder*
     return this;
 }
 
-ConferenceConflictParams::Builder* 
-        ConferenceConflictParams::Builder::setDebugMode(int debug) {
-    debugMode = debug;
-    return this;
-}
-
-
-
 const ConferenceConflictParams* ConferenceConflictParams::Builder::build() {
     return new ConferenceConflictParams(
             sessions,
@@ -154,8 +142,7 @@ const ConferenceConflictParams* ConferenceConflictParams::Builder::build() {
             pBatch,
             eBatch,
             dist,
-            conflictSize,
-            debugMode);
+            conflictSize);
 }
 
 
@@ -171,8 +158,7 @@ ConferenceConflictParams::ConferenceConflictParams(
         int pBtch, 
         int eBtch, 
         Dist distro, 
-        ConflictSizeConstraint size,
-        int debug) {
+        ConflictSizeConstraint size) {
     sessions = sess;
     attendees = atten;
     sesPerAtte = sesAttn;
@@ -185,5 +171,4 @@ ConferenceConflictParams::ConferenceConflictParams(
     eBatch = eBtch;
     dist = distro;
     conflictSize = size;
-    debugMode = debug;
 }

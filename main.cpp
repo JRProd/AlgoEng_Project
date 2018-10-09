@@ -30,8 +30,7 @@ int main(int argc, char** argv) {
                 ->setOutputNewLine(10)
                 ->setPBatchSize(10000)
                 ->setEBatchSize(100000)
-                ->setConflictSizeConstrinat(ConflictSizeConstraint::M)
-                ->setDebugMode(0),
+                ->setConflictSizeConstrinat(ConflictSizeConstraint::M),
         ConferenceConflictParams::Builder()
                 .setDistribution(Dist::Skewed)
                 ->setShowOutput(0)
@@ -39,7 +38,6 @@ int main(int argc, char** argv) {
                 ->setPBatchSize(10000)
                 ->setEBatchSize(100000)
                 ->setConflictSizeConstrinat(ConflictSizeConstraint::M)
-                ->setDebugMode(0)
     };
     
     int upperAttendee[6] = {10, 50, 100, 500, 1000, 5000};
@@ -138,7 +136,6 @@ int main(int argc, char** argv) {
     std::cout << duration << "ms" << std::endl;
     
 /*
-    int debugMode = -1;
     
     const ConferenceConflictParams* params = ConferenceConflictParams::Builder()
             .setSessions(1000)
@@ -150,50 +147,13 @@ int main(int argc, char** argv) {
             ->setPBatchSize(10000)
             ->setEBatchSize(100000)
             ->setConflictSizeConstrinat(ConflictSizeConstrinat::N2)
-            ->setDebugMode(debugMode)
             ->build();
 
     ConferenceConflictDetector conferenceDetector(params);
     
-    std::chrono::time_point<std::chrono::system_clock> fullProgram;
-    if(debugMode >= 0) {
-        std::cout << "main.cpp #### Starting" << std::endl;
-        fullProgram = std::chrono::system_clock::now();
-    }
-            std::chrono::time_point<std::chrono::system_clock> generate;
-            if(debugMode >= 0) {
-                std::cout << "         #### Generating conflicts" << std::endl;
-                generate = std::chrono::system_clock::now();
-            }
     conferenceDetector.generateConflicts();
-            if(debugMode >= 0) {
-                std::cout << "         #### Finished generating conflicts in ";
-                auto end = std::chrono::system_clock::now() - generate;
-                long duration = 
-                    std::chrono::duration_cast<std::chrono::milliseconds>(end).count();
-                std::cout << duration << "ms" << std::endl;
-            }
-            std::chrono::time_point<std::chrono::system_clock> results;
-            if(debugMode >= 0) {
-                std::cout << "         #### Handling result" << std::endl;
-                results = std::chrono::system_clock::now();
-            }
     conferenceDetector.handleResults("test.txt");
-            if(debugMode >= 0) {
-                std::cout << "         #### Handled result in ";
-                auto end = std::chrono::system_clock::now() - results;
-                long duration = 
-                    std::chrono::duration_cast<std::chrono::milliseconds>(end).count();
-                std::cout << duration << "ms" << std::endl;
-            }
-    if(debugMode >= 0) {
-        std::cout << "main.cpp #### Finished in ";
-        auto end = std::chrono::system_clock::now() - fullProgram;
-        long duration = 
-            std::chrono::duration_cast<std::chrono::milliseconds>(end).count();
-        std::cout << duration << "ms" << std::endl;
-    }
-    
+ * 
     delete params;
      */
 }

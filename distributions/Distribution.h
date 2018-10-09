@@ -44,9 +44,6 @@ protected:
     int lowerBound = 0;
     int upperBound;
     
-    int debugMode = 0;
-    std::chrono::time_point<std::chrono::system_clock> start;
-    
     /** Generate individual sessions based on a distribution
      * 
      * @return const int - Sessions generated

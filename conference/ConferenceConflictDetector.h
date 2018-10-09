@@ -79,8 +79,6 @@ private:
     int pBatchSize = 1000;
     int eBatchSize = 1000;
     
-    int debugMode = false;
-    std::chrono::time_point<std::chrono::system_clock> start;
     
     // Distribution
     Dist distribution;
@@ -96,9 +94,6 @@ private:
     
     // Adds a set to the conflict handler
     void addConflictSet(std::set<int> set);
-    
-    // Debug Output
-    void initalDebug();
 };
 
 #endif /* CONFERENCECONFLICTDETECTOR_H */

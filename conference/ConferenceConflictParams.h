@@ -27,7 +27,6 @@ public:
     int getEBatch() const;
     Dist getDistribution()const;
     ConflictSizeConstraint getConflictSizeConstrinat() const;
-    int getDebugMode() const;
     
     // Builder construct
     class Builder {
@@ -44,7 +43,6 @@ public:
         Builder* setEBatchSize(int eBtch);
         Builder* setDistribution(Dist distro);
         Builder* setConflictSizeConstrinat(ConflictSizeConstraint size);
-        Builder* setDebugMode(int debug);
         const ConferenceConflictParams* build();
     private:
         // Default values for the parameters
@@ -60,7 +58,6 @@ public:
         int eBatch = 5000;
         Dist dist = Dist::Uniform;
         ConflictSizeConstraint conflictSize;
-        int debugMode = 0;
     };
 private:
     int sessions;
@@ -75,7 +72,6 @@ private:
     int eBatch;
     Dist dist;
     ConflictSizeConstraint conflictSize;
-    int debugMode;
     
     // Private constructor
     ConferenceConflictParams(
@@ -90,8 +86,7 @@ private:
             int pBtch,
             int eBtch,
             Dist distro,
-            ConflictSizeConstraint size,
-            int debug);
+            ConflictSizeConstraint size);
 };
 
 #endif /* CONFERENCECONFLICTPARAM_H */
