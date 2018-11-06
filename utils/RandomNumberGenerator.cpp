@@ -82,6 +82,7 @@ int RandomNumberGenerator::TwoTieredRandomGenerator(
     //  to the number and in the case that percent >= split, the new lowerBound
     //  is tier.
     int newUpper = upperBound - (tier - lowerBound);
+    //std::cout << newUpper
     
     // Higher split results in more on the left side
     if(percent < split) {
@@ -89,7 +90,7 @@ int RandomNumberGenerator::TwoTieredRandomGenerator(
         return randomNumber(lowerBound, tier);
     } else {
         // Random number between [tier, upperBound)
-        return randomNumber(tier, newUpper);
+        return randomNumber(tier, upperBound);
     }
 }
 
