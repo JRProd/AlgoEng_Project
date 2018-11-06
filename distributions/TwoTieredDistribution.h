@@ -25,14 +25,12 @@ public:
      * @param tr - Where the tier is split
      * @param splt - The split percentage
      * @param upperB - Upper bound of the distribution
-     * @param debug - Debug Mode
      */
     TwoTieredDistribution(
             const int lowerB,
             const int tr,
             const float splt,
-            const int upperB,
-            const int debug);
+            const int upperB);
     virtual ~TwoTieredDistribution();
     
     /** Generate a unique list of sessions, can flip between two tiered and 

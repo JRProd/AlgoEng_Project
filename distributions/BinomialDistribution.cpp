@@ -9,8 +9,7 @@
 
 BinomialDistribution::BinomialDistribution(
         const int lowerB, 
-        const int upperB,
-        const int debug) {
+        const int upperB) {
     if(lowerB < 0) {
         throw std::invalid_argument(
                 "BinomialDistribution: Lower bound must be >= to 0");
@@ -22,7 +21,6 @@ BinomialDistribution::BinomialDistribution(
     
     lowerBound = lowerB;
     upperBound = upperB;
-    debugMode = debug;
 }
 
 BinomialDistribution::~BinomialDistribution() {

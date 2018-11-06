@@ -9,8 +9,7 @@
 
 UniformDistribution::UniformDistribution(
         const int lowerB, 
-        const int upperB,
-        const int debug) {
+        const int upperB) {
     if(lowerB < 0) {
         throw std::invalid_argument(
                 "UniformDistribution: Lower bound must be >= to 0");
@@ -22,7 +21,6 @@ UniformDistribution::UniformDistribution(
     
     lowerBound = lowerB; 
     upperBound = upperB;
-    debugMode = debug;
 }
 
 UniformDistribution::~UniformDistribution() {

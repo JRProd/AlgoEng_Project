@@ -38,8 +38,6 @@ ConferenceConflictDetector::ConferenceConflictDetector(
     
     setUpDistribution();
     selectConflictSize();
-    
-    initalDebug();
 }
 
 ConferenceConflictDetector::ConferenceConflictDetector(
@@ -56,12 +54,9 @@ ConferenceConflictDetector::ConferenceConflictDetector(
     eBatchSize = params->getEBatch();
     distribution = params->getDistribution();
     conflictSize = params->getConflictSizeConstrinat();
-    debugMode = params->getDebugMode();
     
     setUpDistribution();
     selectConflictSize();
-    
-    initalDebug();
 }
 
 ConferenceConflictDetector::~ConferenceConflictDetector() {
@@ -70,11 +65,6 @@ ConferenceConflictDetector::~ConferenceConflictDetector() {
 }
 
 void ConferenceConflictDetector::generateConflicts() {
-        if(debugMode == 1 ) {
-            std::cout << "ConferenceConflictDetector::generateConflicts: " << 
-                    "Starting" << std::endl;
-        }
-
     bool shouldShow = false;
     if(showOutput > 0 ) {
         std::cout << "ConferenceConflictDetector::generateConflicts: " << 
@@ -83,12 +73,6 @@ void ConferenceConflictDetector::generateConflicts() {
     }
     
     conflictHandler->addConflictCount(MathUtils::pairs(sesPerAtte) * attendees);
-    
-            if(debugMode >= 2 ) {
-                std::cout << "ConferenceConflictDetector::generateConflicts:" << 
-                        " Starting to generate Attendee sets" << std::endl;
-            }
-    
     for(int attendee = 0; attendee < attendees; attendee++) {
         std::set<int> set = distributionGenerator->generateSessions(sesPerAtte);
         addConflictSet(set);
@@ -104,14 +88,6 @@ void ConferenceConflictDetector::generateConflicts() {
         }
         
         if(conflictHandler->isAtMaxConflicts()) {
-            if(debugMode >= 1) {
-                std::cout << std::endl;
-                if (debugMode >= 2 ) {
-                    std::cout << "Final attendee was " << attendee << std::endl;
-                }
-                std::cout << "Ending early because no more combinations need" <<
-                        " to be accounted for." << std::endl;
-            }
             return;
         }
         
@@ -120,66 +96,28 @@ void ConferenceConflictDetector::generateConflicts() {
             std::cout << std::endl;
         }
     }
-    
-            if(debugMode >= 2 ) {
-                std::cout << "ConferenceConflictDetector::generateConflicts:" <<
-                        " Finished generating Attendee sets" << std::endl;
-            }
-        if(debugMode == 1 ) {
-            std::cout << "ConferenceConflictDetector::generateConflicts:" <<
-                    " Ending" << std::endl;
-        }
 }
 
 void ConferenceConflictDetector::handleResults(std::string output) {
-        if(debugMode >= 1 ) {
-            std::cout << "ConferenceConflictDetector::handleResults: Starting" 
-                    << std::endl;
-        }
-    
     FileHandler fileHandler;
     fileHandler.openFile(output);
     
     //N Output
-            if(debugMode >= 2 ) {
-                std::cout << "ConferenceConflictDetector::handleResults:" << 
-                        " Writing N" << std::endl;
-            }
     fileHandler.write("N", sessions);
     
     //M Output
-            if(debugMode >= 2 ) {
-                std::cout << "ConferenceConflictDetector::handleResults:" << 
-                        " Writing M" << std::endl;
-            }
     fileHandler.write("M", conflictHandler->getSizeOfEArray());
     
     //T Output
-            if(debugMode >= 2 ) {
-                std::cout << "ConferenceConflictDetector::handleResults:" <<
-                        " Writing T" << std::endl;
-            }
     fileHandler.write("T", conflictHandler->getConflictCount());
     
     //S Output
-            if(debugMode >= 2 ) {
-                std::cout << "ConferenceConflictDetector::handleResults:" <<
-                        " Writing S" << std::endl;
-            }
     fileHandler.write("S", attendees);
     
     //K Output
-            if(debugMode >= 2 ) {
-                std::cout << "ConferenceConflictDetector::handleResults:" <<
-                        " Writing K" << std::endl;
-            }
     fileHandler.write("K", sesPerAtte);
     
     //DIST Output
-            if(debugMode >= 2 ) {
-                std::cout << "ConferenceConflictDetector::handleResults:" <<
-                        " Writing DIST" << std::endl;
-            }
     switch(distribution) {
         case Dist::Uniform:
             fileHandler.write("DIST", "UNIFORM");
@@ -199,67 +137,19 @@ void ConferenceConflictDetector::handleResults(std::string output) {
     }
     
     // Get the peArray
-            if(debugMode >= 2 ) {
-                std::cout << "ConferenceConflictDetector::handleResults:" <<
-                        " Creating the peArray" << std::endl;
-                start = std::chrono::system_clock::now();
-            }
     int** peArray = conflictHandler->peArray();
-            if(debugMode >= 2 ) {
-                std::cout << "ConferenceConflictDetector::handleResults:" <<
-                        " Created the peArray in ";
-                auto end = std::chrono::system_clock::now() - start;
-                long duration = 
-                    std::chrono::duration_cast<std::chrono::milliseconds>(end)
-                    .count();
-                std::cout << duration  << "ms" << std::endl;
-            }
     
     //P[] Output
-            if(debugMode >= 2 ) {
-                std::cout << "ConferenceConflictDetector::handleResults:" <<
-                        " Started writing P[]" << std::endl;
-                start = std::chrono::system_clock::now();
-            }
     fileHandler.writeList("P", *(peArray+0), sessions, pBatchSize);
-            if(debugMode >= 2 ) {
-                std::cout << "ConferenceConflictDetector::handleResults:" <<
-                        " Finished writing P[] in ";
-                auto end = std::chrono::system_clock::now() - start;
-                long duration = 
-                    std::chrono::duration_cast<std::chrono::milliseconds>(end)
-                    .count();
-                std::cout << duration  << "ms" << std::endl;
-            }
-    
-            if(debugMode >= 2 ) {
-                std::cout << "ConferenceConflictDetector::handleResults: " <<
-                        "Started writing E[]" << std::endl;
-            }
     //E[] Output
     fileHandler.writeList("E", *(peArray+1), conflictHandler->getSizeOfEArray(), 
                     eBatchSize);
-    
-            if(debugMode >= 2 ) {
-                std::cout << "ConferenceConflictDetector::handleResults: " <<
-                        "Finished writing E[] in ";
-                auto end = std::chrono::system_clock::now() - start;
-                long duration = 
-                    std::chrono::duration_cast<std::chrono::milliseconds>(end)
-                    .count();
-                std::cout << duration  << "ms" << std::endl;
-            }
     
     delete[] *(peArray+0);
     delete[] *(peArray+1);
     delete[] peArray;
     
     fileHandler.closeFile();
-    
-        if(debugMode >= 1 ) {
-            std::cout << "ConferenceConflictDetector::handleResults: " <<
-                        "Ending" << std::endl;
-        }
 }
 
 void ConferenceConflictDetector::setUpDistribution() {
@@ -267,34 +157,29 @@ void ConferenceConflictDetector::setUpDistribution() {
         case Dist::Uniform:
             distributionGenerator = new UniformDistribution(
                     lowerBound, 
-                    sessions,
-                    debugMode);
+                    sessions);
             break;
         case Dist::Tiered:
             distributionGenerator = new TwoTieredDistribution(
                     0,
                     twoTieredTier, 
                     twoTieredSplit, 
-                    sessions,
-                    debugMode);
+                    sessions);
             break;
         case Dist::Skewed:
             distributionGenerator = new SkewedDistribution(
                     lowerBound, 
-                    sessions,
-                    debugMode);
+                    sessions);
             break;
         case Dist::Binomial:
             distributionGenerator = new BinomialDistribution(
                     lowerBound,
-                    sessions,
-                    debugMode);
+                    sessions);
             break;
         default:
             distributionGenerator = new UniformDistribution(
                     lowerBound,
-                    sessions,
-                    debugMode);
+                    sessions);
             break;
     }
 }
@@ -313,16 +198,6 @@ void ConferenceConflictDetector::selectConflictSize() {
 }
 
 void ConferenceConflictDetector::addConflictSet(std::set<int> set) {
-        if (debugMode == 1 ) {
-            std::cout << "ConferenceConflictDetector::addConflictSet:" <<
-                        " Starting" << std::endl;
-        }
-            if (debugMode >= 2 ) {
-                std::cout << "ConferenceConflictDetector::addConflictSet:" <<
-                        " Starting pair creation" << std::endl;
-                start = std::chrono::system_clock::now();
-            }
-        
     for(std::set<int>::iterator first = set.begin(); 
             first != set.end(); 
             ++first) {
@@ -335,75 +210,4 @@ void ConferenceConflictDetector::addConflictSet(std::set<int> set) {
             }
         }
     }
-        
-            if (debugMode >= 2 ) {
-                std::cout << "Total unique pairs after new set added - " 
-                        << conflictHandler->getUniqueConflictCount() 
-                        << std::endl;
-                std::cout << "ConferenceConflictDetector::addConflictSet:" <<
-                        " Finished pair creation in ";
-                auto end = std::chrono::system_clock::now() - start;
-                long duration = 
-                    std::chrono::duration_cast<std::chrono::milliseconds>(end)
-                .count();
-                std::cout << duration  << "ms" << std::endl;
-            }
-        if (debugMode == 1 ) {
-            std::cout << "ConferenceConflictDetector::addConflictSet:" <<
-                        " Ending" << std::endl;
-        }
-}
-
-void ConferenceConflictDetector::initalDebug() {
-    if(debugMode <= 0) {
-        return;
-    }
-    
-    std::cout << "Creating Conference Conflict Detector with parameters" 
-              << std::endl;
-    std::cout << "Sessions              -- " << sessions << std::endl;
-    std::cout << "Attendees             -- " << attendees << std::endl;
-    std::cout << "Sessions per Attendee -- " << sesPerAtte << std::endl;
-    std::cout << "Lower Bound           -- " << lowerBound << std::endl;
-    std::cout << "Two Tiered Tier       -- " << twoTieredTier << std::endl;
-    std::cout << "Two Tiered Split      -- " << twoTieredSplit << std::endl;
-    std::cout << "Show Output every     -- " << showOutput << std::endl;
-    std::cout << "Show Output new line  -- " << showOutputNewLine << std::endl;
-    std::cout << "P array batch size    -- " << pBatchSize << std::endl;
-    std::cout << "E array batch size    -- " << eBatchSize << std::endl;
-    std::cout << "Using distribution    -- ";
-    switch(distribution) {
-        case Dist::Uniform:
-            std::cout << "UNIFORM";
-            break;
-        case Dist::Skewed:
-            std::cout << "SKEWED";
-            break;
-        case Dist::Tiered:
-            std::cout << "TIERED";
-            break;
-        case Dist::Binomial:
-            std::cout << "BINOMIAL";
-            break;
-        default:
-            std::cout << "UNIFORM";
-            break;
-    }
-    std::cout << std::endl;
-        
-    std::cout << "Using constraint size -- ";
-    switch(conflictSize) {
-        case ConflictSizeConstraint::M:
-            std::cout << "M";
-            break;
-        case ConflictSizeConstraint::N2:
-            std::cout << "N2";
-            break;
-        default:
-            std::cout << "N2";
-            break;
-    }
-    std::cout << std::endl;
-    
-    std::cout << "Using debug mode      -- " << debugMode << std::endl;
 }

@@ -17,9 +17,8 @@ public:
      * 
      * @param lowerB - Lower bound of the distribution
      * @param upperB - Upper bound of the distribution
-     * @param debug - Debug mode
      */
-    BinomialDistribution(const int lowerB, const int upperB, const int debug);
+    BinomialDistribution(const int lowerB, const int upperB);
     virtual ~BinomialDistribution();
     
     /** What distribution is this
