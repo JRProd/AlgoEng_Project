@@ -18,6 +18,8 @@ public:
      */
     ConflictGraph(int size);
     
+    ConflictGraph(int** peArray, int pSize, int eSize);
+    
     /** Destructor, deletes the adjacency graph
      * 
      */
@@ -32,6 +34,8 @@ public:
      * 
      */
     void addConflict(std::pair<int, int> pair) override;
+    
+    void addToColoring(ColorOrderingInterface* colorOrder);
     
     ConflictSizeConstraint whatSize() override;
 private:

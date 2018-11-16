@@ -23,6 +23,8 @@ class ConflictGraphUnitTest : public CPPUNIT_NS::TestFixture {
 
     CPPUNIT_TEST(testSmallGraph);
     CPPUNIT_TEST(testLargeGraph);
+    CPPUNIT_TEST(testBuildSmallGraph);
+    CPPUNIT_TEST(testBuildLargeGraph);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -35,6 +37,8 @@ public:
 private:
     void testSmallGraph();
     void testLargeGraph();
+    void testBuildSmallGraph();
+    void testBuildLargeGraph();
     
     bool validateArrays(const int* const list1, const int* const list2, const int size);
     void printArray(const int* const list, const int size);

@@ -4,6 +4,16 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <logicalFolder name="f5" displayName="Coloring" projectFiles="true">
+        <logicalFolder name="f1" displayName="ColoringOrder" projectFiles="true">
+          <itemPath>coloring/ColorOrderingInterface.h</itemPath>
+          <itemPath>coloring/InOrderOrdering.h</itemPath>
+          <itemPath>coloring/RandomOrdering.h</itemPath>
+          <itemPath>coloring/SmallestLastOrdering.h</itemPath>
+        </logicalFolder>
+        <itemPath>coloring/Colorer.h</itemPath>
+        <itemPath>coloring/Vertex.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="f1" displayName="Conference" projectFiles="true">
         <itemPath>conference/ConferenceConflictDetector.h</itemPath>
         <itemPath>conference/ConferenceConflictParams.h</itemPath>
@@ -33,6 +43,15 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <logicalFolder name="f5" displayName="Coloring" projectFiles="true">
+        <logicalFolder name="f1" displayName="Coloring Order" projectFiles="true">
+          <itemPath>coloring/InOrderOrdering.cpp</itemPath>
+          <itemPath>coloring/RandomOrdering.cpp</itemPath>
+          <itemPath>coloring/SmallestLastOrdering.cpp</itemPath>
+        </logicalFolder>
+        <itemPath>coloring/Colorer.cpp</itemPath>
+        <itemPath>coloring/Vertex.cpp</itemPath>
+      </logicalFolder>
       <logicalFolder name="f4" displayName="Conference" projectFiles="true">
         <itemPath>conference/ConferenceConflictDetector.cpp</itemPath>
         <itemPath>conference/ConferenceConflictParams.cpp</itemPath>
@@ -60,6 +79,22 @@
                    displayName="Test Files"
                    projectFiles="false"
                    kind="TEST_LOGICAL_FOLDER">
+      <logicalFolder name="f7"
+                     displayName="Color Ordering Unit Test"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/units/ColorOrderingTestRunner.cpp</itemPath>
+        <itemPath>tests/units/ColorOrderingUnitTest.cpp</itemPath>
+        <itemPath>tests/units/ColorOrderingUnitTest.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f8"
+                     displayName="Colorer Unit Test"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/units/ColorerTestRunner.cpp</itemPath>
+        <itemPath>tests/units/ColorerUnitTest.cpp</itemPath>
+        <itemPath>tests/units/ColorerUnitTest.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="f3"
                      displayName="Conflict Graph Unit Test"
                      projectFiles="true"
@@ -100,6 +135,14 @@
         <itemPath>tests/units/RandomGeneratorUnitTest.cpp</itemPath>
         <itemPath>tests/units/RandomGeneratorUnitTest.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="f6"
+                     displayName="Vertex Unit Test"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/units/VertextTestRunner.cpp</itemPath>
+        <itemPath>tests/units/VertextUnitTest.cpp</itemPath>
+        <itemPath>tests/units/VertextUnitTest.h</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -135,9 +178,36 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
         </linkerTool>
       </compileType>
+      <item path="coloring/ColorOrderingInterface.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="coloring/Colorer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="coloring/Colorer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="coloring/InOrderOrdering.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="coloring/InOrderOrdering.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="coloring/RandomOrdering.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="coloring/RandomOrdering.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="coloring/SmallestLastOrdering.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="coloring/SmallestLastOrdering.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="coloring/Vertex.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="coloring/Vertex.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="conference/ConferenceConflictDetector.cpp"
             ex="false"
             tool="1"
@@ -227,6 +297,11 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
         </linkerTool>
       </folder>
@@ -240,6 +315,11 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f1</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -277,6 +357,11 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcppunit</linkerOptionItem>
@@ -293,6 +378,11 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f3</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -324,6 +414,11 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcppunit</linkerOptionItem>
@@ -346,6 +441,67 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+          <linkerLibItems>
+            <linkerOptionItem>-lcppunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f6">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f6</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+          <linkerLibItems>
+            <linkerOptionItem>-lcppunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f7">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f7</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+          <linkerLibItems>
+            <linkerOptionItem>-lcppunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f8">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f8</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lcppunit</linkerOptionItem>
@@ -353,6 +509,27 @@
         </linkerTool>
       </folder>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/units/ColorOrderingTestRunner.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="tests/units/ColorOrderingUnitTest.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="tests/units/ColorOrderingUnitTest.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="tests/units/ColorerTestRunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/units/ColorerUnitTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/units/ColorerUnitTest.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/units/ConflictGraphTestRunner.cpp"
             ex="false"
@@ -413,6 +590,12 @@
             ex="false"
             tool="3"
             flavor2="0">
+      </item>
+      <item path="tests/units/VertextTestRunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/units/VertextUnitTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/units/VertextUnitTest.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="utils/FileHandler.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -462,9 +645,36 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
         </linkerTool>
       </compileType>
+      <item path="coloring/ColorOrderingInterface.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="coloring/Colorer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="coloring/Colorer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="coloring/InOrderOrdering.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="coloring/InOrderOrdering.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="coloring/RandomOrdering.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="coloring/RandomOrdering.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="coloring/SmallestLastOrdering.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="coloring/SmallestLastOrdering.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="coloring/Vertex.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="coloring/Vertex.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="conference/ConferenceConflictDetector.cpp"
             ex="false"
             tool="1"
@@ -554,6 +764,11 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
         </linkerTool>
       </folder>
@@ -567,6 +782,11 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f1</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -604,6 +824,11 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
@@ -620,6 +845,11 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f3</output>
           <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -651,6 +881,11 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
@@ -673,6 +908,67 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f6">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f6</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f7">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f7</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </linkerDynSerch>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f8">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f8</output>
+          <linkerDynSerch>
+            <pElem>.</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
@@ -680,6 +976,27 @@
         </linkerTool>
       </folder>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/units/ColorOrderingTestRunner.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="tests/units/ColorOrderingUnitTest.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="tests/units/ColorOrderingUnitTest.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="tests/units/ColorerTestRunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/units/ColorerUnitTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/units/ColorerUnitTest.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/units/ConflictGraphTestRunner.cpp"
             ex="false"
@@ -740,6 +1057,12 @@
             ex="false"
             tool="3"
             flavor2="0">
+      </item>
+      <item path="tests/units/VertextTestRunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/units/VertextUnitTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/units/VertextUnitTest.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="utils/FileHandler.cpp" ex="false" tool="1" flavor2="0">
       </item>

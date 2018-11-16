@@ -11,6 +11,8 @@
 #include <stdexcept>
 #include <utility>
 
+#include "../coloring/ColorOrderingInterface.h"
+#include "../coloring/Vertex.h"
 #include "../utils/MathUtils.h"
 
 enum class ConflictSizeConstraint {

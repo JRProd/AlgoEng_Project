@@ -20,6 +20,49 @@ ConflictGraph::ConflictGraph(int size) {
     buildGraph();
 }
 
+#include <iostream>
+ConflictGraph::ConflictGraph(int** peArray, int pSize, int eSize) {
+    std::cout << "Creating graph" << std::endl;
+    N = pSize;
+    
+    conflictCount = -1;
+    uniqueConflictCount = 0;
+    
+    maxConflict = MathUtils::pairs(N);
+    
+    buildGraph();
+    
+    for(int p = 0; p < pSize - 1; p++) {
+        int sE = *(*(peArray+0)+p);
+        int eE = *(*(peArray+0)+p+1);
+        
+        int nextE = 2;
+        while(eE == eSize) {
+            if(p+nextE < pSize) {
+                eE = *(*(peArray+0)+p+nextE);
+                nextE ++;
+            } else {
+                eE = eSize-1;
+                break;
+            }
+        }
+        
+        for(int e = sE; e < eE; e++){
+            addConflict(std::make_pair(p,*(*(peArray+1)+e)));
+        }
+        std::cout << std::endl;
+    }
+    
+    int sE = *(*(peArray+0)+pSize-1);
+    int eE = eSize;
+        
+    for(int e = sE; e < eE; e++){
+        addConflict(std::make_pair(pSize-1, *(*(peArray+1)+e)));
+    }
+    std::cout << std::endl;
+}
+
+
 ConflictGraph::~ConflictGraph() {
     for(int i = 0; i < N; i++) {
         if(*(adjacencyGraph+i) != nullptr) {
@@ -70,6 +113,34 @@ void ConflictGraph::addConflict(std::pair<int, int> pair) {
         *(*(adjacencyGraph+pair.second)+pair.first) = true;
     }
 }
+
+#include <vector>
+void ConflictGraph::addToColoring(ColorOrderingInterface* colorOrder) {
+    Vertex* vertexArray[N];
+    for(int i = 0; i < N; i++) {
+        vertexArray[i] = nullptr;
+    }
+    
+    for(int i = 0; i < N; i++) {
+        if(vertexArray[i] == nullptr) {
+            vertexArray[i] = new Vertex(i);
+        }
+        
+        Vertex* vertex = vertexArray[i];
+        for(int j = 0; j < N; j++) {
+            if(*(*(adjacencyGraph+i)+j) == true) {
+                if(vertexArray[j] == nullptr) {
+                    vertexArray[j] = new Vertex(j);
+                }
+                
+                vertex->addConflict(vertexArray[j]);
+            }
+        }
+        
+        colorOrder->addVertex(vertex);
+    }
+}
+
 
 ConflictSizeConstraint ConflictGraph::whatSize() {
     return ConflictSizeConstraint::N2;

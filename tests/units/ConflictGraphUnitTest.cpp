@@ -128,6 +128,51 @@ void ConflictGraphUnitTest::testLargeGraph() {
     CPPUNIT_ASSERT(pValid && eValid);
 }
 
+#include "../../coloring/ColorOrderingInterface.h"
+#include "../../coloring/SmallestLastOrdering.h"
+void ConflictGraphUnitTest::testBuildSmallGraph() {
+    int pArray[10] = {0, 4, 8, 14, 21, 27, 34, 40, 44, 48};
+    int eArray[52] = {2, 4, 6, 8, 3, 5, 7, 9, 0, 3, 4, 5, 
+                      6, 8, 1, 2, 4, 5, 6, 7, 9, 0, 2, 3, 
+                      5, 6, 8, 1, 2, 3, 4, 6, 7, 9, 0, 2, 
+                      3, 4, 5, 8, 1, 3, 5, 9, 0, 2, 4, 6,
+                      1, 3, 5, 7};
+    
+    int* peArray[2] = {pArray, eArray};
+    
+    ConflictGraph* conflicts = new ConflictGraph(peArray, 10, 52);
+}
+
+void ConflictGraphUnitTest::testBuildLargeGraph() {
+    int pArray[30] = {0, 9, 23, 32, 46, 55, 64, 73, 87, 103, 
+                      112, 121, 135, 151, 165, 174, 183, 192, 201, 217, 
+                      244, 226, 244, 244, 244, 244, 235, 244, 244, 244};
+    int eArray[244] = {2, 4, 6, 8, 10, 12, 14, 16, 18, 3, 5, 7, 8, 9, 
+                       11, 12, 13, 15, 17, 18, 19, 21, 26, 0, 4, 6, 8, 
+                       10, 12, 14, 16, 18, 1, 5, 7, 8, 9, 11, 12, 13, 
+                       15, 17, 18, 19, 21, 26, 0, 2, 6, 8, 10, 12, 14, 
+                       16, 18, 1, 3, 7, 9, 11, 13, 15, 17, 19, 0, 2, 4, 
+                       8, 10, 12, 14, 16, 18, 1, 3, 5, 8, 9, 11, 12, 13, 
+                       15, 17, 18, 19, 21, 26, 0, 1, 2, 3, 4, 6, 7, 10, 
+                       11, 12, 13, 14, 16, 18, 21, 26, 1, 3, 5, 7, 11, 
+                       13, 15, 17, 19, 0, 2, 4, 6, 8, 12, 14, 16, 18, 
+                       1, 3, 5, 7, 8, 9, 12, 13, 15, 17, 18, 19, 21, 26, 
+                       0, 1, 2, 3, 4, 6, 7, 8, 10, 11, 13, 14, 16, 18, 
+                       21, 26, 1, 3, 5, 7, 8, 9, 11, 12, 15, 17, 18, 19, 
+                       21, 26, 0, 2, 4, 6, 8, 10, 12, 16, 18, 1, 3, 5, 
+                       7, 9, 11, 13, 17, 19, 0, 2, 4, 6, 8, 10, 12, 14, 
+                       18, 1, 3, 5, 7, 9, 11, 13, 15, 19, 0, 1, 2, 3, 4, 
+                       6, 7, 8, 10, 11, 12, 13, 14, 16, 21, 26, 1, 3, 5, 
+                       7, 9, 11, 13, 15, 17, 1, 3, 7, 8, 11, 12, 13, 18, 
+                       26, 1, 3, 7, 8, 11, 12, 13, 18, 21};
+    
+    int* peArray[2] = {pArray, eArray};
+    
+    ConflictGraph* conflicts = new ConflictGraph(peArray, 30, 244);
+
+}
+
+
 bool ConflictGraphUnitTest::validateArrays(const int* const list1, const int* const list2, const int size) {
     for(int i = 0; i < size; i++) {
         if(*(list1+i) != *(list2+i)) {

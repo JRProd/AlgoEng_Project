@@ -35,6 +35,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/coloring/Colorer.o \
+	${OBJECTDIR}/coloring/InOrderOrdering.o \
+	${OBJECTDIR}/coloring/RandomOrdering.o \
+	${OBJECTDIR}/coloring/SmallestLastOrdering.o \
+	${OBJECTDIR}/coloring/Vertex.o \
 	${OBJECTDIR}/conference/ConferenceConflictDetector.o \
 	${OBJECTDIR}/conference/ConferenceConflictParams.o \
 	${OBJECTDIR}/conflicts/ConflictGraph.o \
@@ -55,14 +60,21 @@ TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 
 # Test Files
 TESTFILES= \
+	${TESTDIR}/TestFiles/f7 \
+	${TESTDIR}/TestFiles/f8 \
 	${TESTDIR}/TestFiles/f3 \
 	${TESTDIR}/TestFiles/f5 \
 	${TESTDIR}/TestFiles/f1 \
 	${TESTDIR}/TestFiles/f4 \
-	${TESTDIR}/TestFiles/f2
+	${TESTDIR}/TestFiles/f2 \
+	${TESTDIR}/TestFiles/f6
 
 # Test Object Files
 TESTOBJECTFILES= \
+	${TESTDIR}/tests/units/ColorOrderingTestRunner.o \
+	${TESTDIR}/tests/units/ColorOrderingUnitTest.o \
+	${TESTDIR}/tests/units/ColorerTestRunner.o \
+	${TESTDIR}/tests/units/ColorerUnitTest.o \
 	${TESTDIR}/tests/units/ConflictGraphTestRunner.o \
 	${TESTDIR}/tests/units/ConflictGraphUnitTest.o \
 	${TESTDIR}/tests/units/ConflictListTestRunner.o \
@@ -72,7 +84,9 @@ TESTOBJECTFILES= \
 	${TESTDIR}/tests/units/MathUtilTestRunner.o \
 	${TESTDIR}/tests/units/MathUtilUnitTest.o \
 	${TESTDIR}/tests/units/RandomGeneratorTestRunner.o \
-	${TESTDIR}/tests/units/RandomGeneratorUnitTest.o
+	${TESTDIR}/tests/units/RandomGeneratorUnitTest.o \
+	${TESTDIR}/tests/units/VertextTestRunner.o \
+	${TESTDIR}/tests/units/VertextUnitTest.o
 
 # C Compiler Flags
 CFLAGS=
@@ -97,6 +111,31 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/algoeng_project: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/algoeng_project ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/coloring/Colorer.o: coloring/Colorer.cpp
+	${MKDIR} -p ${OBJECTDIR}/coloring
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/coloring/Colorer.o coloring/Colorer.cpp
+
+${OBJECTDIR}/coloring/InOrderOrdering.o: coloring/InOrderOrdering.cpp
+	${MKDIR} -p ${OBJECTDIR}/coloring
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/coloring/InOrderOrdering.o coloring/InOrderOrdering.cpp
+
+${OBJECTDIR}/coloring/RandomOrdering.o: coloring/RandomOrdering.cpp
+	${MKDIR} -p ${OBJECTDIR}/coloring
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/coloring/RandomOrdering.o coloring/RandomOrdering.cpp
+
+${OBJECTDIR}/coloring/SmallestLastOrdering.o: coloring/SmallestLastOrdering.cpp
+	${MKDIR} -p ${OBJECTDIR}/coloring
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/coloring/SmallestLastOrdering.o coloring/SmallestLastOrdering.cpp
+
+${OBJECTDIR}/coloring/Vertex.o: coloring/Vertex.cpp
+	${MKDIR} -p ${OBJECTDIR}/coloring
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/coloring/Vertex.o coloring/Vertex.cpp
 
 ${OBJECTDIR}/conference/ConferenceConflictDetector.o: conference/ConferenceConflictDetector.cpp
 	${MKDIR} -p ${OBJECTDIR}/conference
@@ -175,6 +214,14 @@ ${OBJECTDIR}/utils/RandomNumberGenerator.o: utils/RandomNumberGenerator.cpp
 .build-tests-conf: .build-tests-subprojects .build-conf ${TESTFILES}
 .build-tests-subprojects:
 
+${TESTDIR}/TestFiles/f7: ${TESTDIR}/tests/units/ColorOrderingTestRunner.o ${TESTDIR}/tests/units/ColorOrderingUnitTest.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f7 $^ ${LDLIBSOPTIONS}   `cppunit-config --libs`   
+
+${TESTDIR}/TestFiles/f8: ${TESTDIR}/tests/units/ColorerTestRunner.o ${TESTDIR}/tests/units/ColorerUnitTest.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f8 $^ ${LDLIBSOPTIONS}   `cppunit-config --libs`   
+
 ${TESTDIR}/TestFiles/f3: ${TESTDIR}/tests/units/ConflictGraphTestRunner.o ${TESTDIR}/tests/units/ConflictGraphUnitTest.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc} -o ${TESTDIR}/TestFiles/f3 $^ ${LDLIBSOPTIONS}   `cppunit-config --libs`   
@@ -194,6 +241,34 @@ ${TESTDIR}/TestFiles/f4: ${TESTDIR}/tests/units/MathUtilTestRunner.o ${TESTDIR}/
 ${TESTDIR}/TestFiles/f2: ${TESTDIR}/tests/units/RandomGeneratorTestRunner.o ${TESTDIR}/tests/units/RandomGeneratorUnitTest.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc} -o ${TESTDIR}/TestFiles/f2 $^ ${LDLIBSOPTIONS}   `cppunit-config --libs`   
+
+${TESTDIR}/TestFiles/f6: ${TESTDIR}/tests/units/VertextTestRunner.o ${TESTDIR}/tests/units/VertextUnitTest.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f6 $^ ${LDLIBSOPTIONS}   `cppunit-config --libs`   
+
+
+${TESTDIR}/tests/units/ColorOrderingTestRunner.o: tests/units/ColorOrderingTestRunner.cpp 
+	${MKDIR} -p ${TESTDIR}/tests/units
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/units/ColorOrderingTestRunner.o tests/units/ColorOrderingTestRunner.cpp
+
+
+${TESTDIR}/tests/units/ColorOrderingUnitTest.o: tests/units/ColorOrderingUnitTest.cpp 
+	${MKDIR} -p ${TESTDIR}/tests/units
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/units/ColorOrderingUnitTest.o tests/units/ColorOrderingUnitTest.cpp
+
+
+${TESTDIR}/tests/units/ColorerTestRunner.o: tests/units/ColorerTestRunner.cpp 
+	${MKDIR} -p ${TESTDIR}/tests/units
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/units/ColorerTestRunner.o tests/units/ColorerTestRunner.cpp
+
+
+${TESTDIR}/tests/units/ColorerUnitTest.o: tests/units/ColorerUnitTest.cpp 
+	${MKDIR} -p ${TESTDIR}/tests/units
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/units/ColorerUnitTest.o tests/units/ColorerUnitTest.cpp
 
 
 ${TESTDIR}/tests/units/ConflictGraphTestRunner.o: tests/units/ConflictGraphTestRunner.cpp 
@@ -255,6 +330,83 @@ ${TESTDIR}/tests/units/RandomGeneratorUnitTest.o: tests/units/RandomGeneratorUni
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/units/RandomGeneratorUnitTest.o tests/units/RandomGeneratorUnitTest.cpp
 
+
+${TESTDIR}/tests/units/VertextTestRunner.o: tests/units/VertextTestRunner.cpp 
+	${MKDIR} -p ${TESTDIR}/tests/units
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/units/VertextTestRunner.o tests/units/VertextTestRunner.cpp
+
+
+${TESTDIR}/tests/units/VertextUnitTest.o: tests/units/VertextUnitTest.cpp 
+	${MKDIR} -p ${TESTDIR}/tests/units
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/units/VertextUnitTest.o tests/units/VertextUnitTest.cpp
+
+
+${OBJECTDIR}/coloring/Colorer_nomain.o: ${OBJECTDIR}/coloring/Colorer.o coloring/Colorer.cpp 
+	${MKDIR} -p ${OBJECTDIR}/coloring
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/coloring/Colorer.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/coloring/Colorer_nomain.o coloring/Colorer.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/coloring/Colorer.o ${OBJECTDIR}/coloring/Colorer_nomain.o;\
+	fi
+
+${OBJECTDIR}/coloring/InOrderOrdering_nomain.o: ${OBJECTDIR}/coloring/InOrderOrdering.o coloring/InOrderOrdering.cpp 
+	${MKDIR} -p ${OBJECTDIR}/coloring
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/coloring/InOrderOrdering.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/coloring/InOrderOrdering_nomain.o coloring/InOrderOrdering.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/coloring/InOrderOrdering.o ${OBJECTDIR}/coloring/InOrderOrdering_nomain.o;\
+	fi
+
+${OBJECTDIR}/coloring/RandomOrdering_nomain.o: ${OBJECTDIR}/coloring/RandomOrdering.o coloring/RandomOrdering.cpp 
+	${MKDIR} -p ${OBJECTDIR}/coloring
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/coloring/RandomOrdering.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/coloring/RandomOrdering_nomain.o coloring/RandomOrdering.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/coloring/RandomOrdering.o ${OBJECTDIR}/coloring/RandomOrdering_nomain.o;\
+	fi
+
+${OBJECTDIR}/coloring/SmallestLastOrdering_nomain.o: ${OBJECTDIR}/coloring/SmallestLastOrdering.o coloring/SmallestLastOrdering.cpp 
+	${MKDIR} -p ${OBJECTDIR}/coloring
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/coloring/SmallestLastOrdering.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/coloring/SmallestLastOrdering_nomain.o coloring/SmallestLastOrdering.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/coloring/SmallestLastOrdering.o ${OBJECTDIR}/coloring/SmallestLastOrdering_nomain.o;\
+	fi
+
+${OBJECTDIR}/coloring/Vertex_nomain.o: ${OBJECTDIR}/coloring/Vertex.o coloring/Vertex.cpp 
+	${MKDIR} -p ${OBJECTDIR}/coloring
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/coloring/Vertex.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/coloring/Vertex_nomain.o coloring/Vertex.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/coloring/Vertex.o ${OBJECTDIR}/coloring/Vertex_nomain.o;\
+	fi
 
 ${OBJECTDIR}/conference/ConferenceConflictDetector_nomain.o: ${OBJECTDIR}/conference/ConferenceConflictDetector.o conference/ConferenceConflictDetector.cpp 
 	${MKDIR} -p ${OBJECTDIR}/conference
@@ -442,11 +594,14 @@ ${OBJECTDIR}/utils/RandomNumberGenerator_nomain.o: ${OBJECTDIR}/utils/RandomNumb
 .test-conf:
 	@if [ "${TEST}" = "" ]; \
 	then  \
+	    ${TESTDIR}/TestFiles/f7 || true; \
+	    ${TESTDIR}/TestFiles/f8 || true; \
 	    ${TESTDIR}/TestFiles/f3 || true; \
 	    ${TESTDIR}/TestFiles/f5 || true; \
 	    ${TESTDIR}/TestFiles/f1 || true; \
 	    ${TESTDIR}/TestFiles/f4 || true; \
 	    ${TESTDIR}/TestFiles/f2 || true; \
+	    ${TESTDIR}/TestFiles/f6 || true; \
 	else  \
 	    ./${TEST} || true; \
 	fi

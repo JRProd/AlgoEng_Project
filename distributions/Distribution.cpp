@@ -23,8 +23,7 @@ std::set<int> Distribution::generateSessions(const int size) {
         }
     
     if(size > upperBound - lowerBound) {
-        throw std::invalid_argument("Distribution::generateSessions:" <<
-                        " Attempting to generate to many unique values");
+        throw std::invalid_argument("Distribution::generateSessions: Attempting to generate to many unique values");
     }
     
     std::set<int> sessions;
