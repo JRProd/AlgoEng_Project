@@ -122,6 +122,10 @@ int RandomNumberGenerator::BinomialRandomGenerator(
     return binomialNumber;
 }
 
+void RandomNumberGenerator::seedGenerator() {
+    srand(time(nullptr));
+}
+
 void RandomNumberGenerator::seedGenerator(const time_t seed) {
     srand(seed);
 }

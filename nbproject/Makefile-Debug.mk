@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/coloring/Colorer.o \
+	${OBJECTDIR}/coloring/ConferenceScheduler.o \
 	${OBJECTDIR}/coloring/InOrderOrdering.o \
 	${OBJECTDIR}/coloring/RandomOrdering.o \
 	${OBJECTDIR}/coloring/SmallestLastOrdering.o \
@@ -65,6 +66,7 @@ TESTFILES= \
 	${TESTDIR}/TestFiles/f3 \
 	${TESTDIR}/TestFiles/f5 \
 	${TESTDIR}/TestFiles/f1 \
+	${TESTDIR}/TestFiles/f9 \
 	${TESTDIR}/TestFiles/f4 \
 	${TESTDIR}/TestFiles/f2 \
 	${TESTDIR}/TestFiles/f6
@@ -81,6 +83,8 @@ TESTOBJECTFILES= \
 	${TESTDIR}/tests/units/ConflictListUnitTest.o \
 	${TESTDIR}/tests/units/DistributionTestRunner.o \
 	${TESTDIR}/tests/units/DistributionUnitTest.o \
+	${TESTDIR}/tests/units/FileHandlerTestRunner.o \
+	${TESTDIR}/tests/units/FileHandlerUnitTest.o \
 	${TESTDIR}/tests/units/MathUtilTestRunner.o \
 	${TESTDIR}/tests/units/MathUtilUnitTest.o \
 	${TESTDIR}/tests/units/RandomGeneratorTestRunner.o \
@@ -116,6 +120,11 @@ ${OBJECTDIR}/coloring/Colorer.o: coloring/Colorer.cpp
 	${MKDIR} -p ${OBJECTDIR}/coloring
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/coloring/Colorer.o coloring/Colorer.cpp
+
+${OBJECTDIR}/coloring/ConferenceScheduler.o: coloring/ConferenceScheduler.cpp
+	${MKDIR} -p ${OBJECTDIR}/coloring
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/coloring/ConferenceScheduler.o coloring/ConferenceScheduler.cpp
 
 ${OBJECTDIR}/coloring/InOrderOrdering.o: coloring/InOrderOrdering.cpp
 	${MKDIR} -p ${OBJECTDIR}/coloring
@@ -234,6 +243,10 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/units/DistributionTestRunner.o ${TESTD
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc} -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS}   -lcppunit 
 
+${TESTDIR}/TestFiles/f9: ${TESTDIR}/tests/units/FileHandlerTestRunner.o ${TESTDIR}/tests/units/FileHandlerUnitTest.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f9 $^ ${LDLIBSOPTIONS}   -lcppunit 
+
 ${TESTDIR}/TestFiles/f4: ${TESTDIR}/tests/units/MathUtilTestRunner.o ${TESTDIR}/tests/units/MathUtilUnitTest.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc} -o ${TESTDIR}/TestFiles/f4 $^ ${LDLIBSOPTIONS}   -lcppunit 
@@ -307,6 +320,18 @@ ${TESTDIR}/tests/units/DistributionUnitTest.o: tests/units/DistributionUnitTest.
 	$(COMPILE.cc) -g -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/units/DistributionUnitTest.o tests/units/DistributionUnitTest.cpp
 
 
+${TESTDIR}/tests/units/FileHandlerTestRunner.o: tests/units/FileHandlerTestRunner.cpp 
+	${MKDIR} -p ${TESTDIR}/tests/units
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/units/FileHandlerTestRunner.o tests/units/FileHandlerTestRunner.cpp
+
+
+${TESTDIR}/tests/units/FileHandlerUnitTest.o: tests/units/FileHandlerUnitTest.cpp 
+	${MKDIR} -p ${TESTDIR}/tests/units
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/units/FileHandlerUnitTest.o tests/units/FileHandlerUnitTest.cpp
+
+
 ${TESTDIR}/tests/units/MathUtilTestRunner.o: tests/units/MathUtilTestRunner.cpp 
 	${MKDIR} -p ${TESTDIR}/tests/units
 	${RM} "$@.d"
@@ -354,6 +379,19 @@ ${OBJECTDIR}/coloring/Colorer_nomain.o: ${OBJECTDIR}/coloring/Colorer.o coloring
 	    $(COMPILE.cc) -g -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/coloring/Colorer_nomain.o coloring/Colorer.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/coloring/Colorer.o ${OBJECTDIR}/coloring/Colorer_nomain.o;\
+	fi
+
+${OBJECTDIR}/coloring/ConferenceScheduler_nomain.o: ${OBJECTDIR}/coloring/ConferenceScheduler.o coloring/ConferenceScheduler.cpp 
+	${MKDIR} -p ${OBJECTDIR}/coloring
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/coloring/ConferenceScheduler.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/coloring/ConferenceScheduler_nomain.o coloring/ConferenceScheduler.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/coloring/ConferenceScheduler.o ${OBJECTDIR}/coloring/ConferenceScheduler_nomain.o;\
 	fi
 
 ${OBJECTDIR}/coloring/InOrderOrdering_nomain.o: ${OBJECTDIR}/coloring/InOrderOrdering.o coloring/InOrderOrdering.cpp 
@@ -599,6 +637,7 @@ ${OBJECTDIR}/utils/RandomNumberGenerator_nomain.o: ${OBJECTDIR}/utils/RandomNumb
 	    ${TESTDIR}/TestFiles/f3 || true; \
 	    ${TESTDIR}/TestFiles/f5 || true; \
 	    ${TESTDIR}/TestFiles/f1 || true; \
+	    ${TESTDIR}/TestFiles/f9 || true; \
 	    ${TESTDIR}/TestFiles/f4 || true; \
 	    ${TESTDIR}/TestFiles/f2 || true; \
 	    ${TESTDIR}/TestFiles/f6 || true; \

@@ -59,6 +59,7 @@ public:
             const int lowerBound, 
             const int upperBound);
     
+    static void seedGenerator();
     static void seedGenerator(const time_t seed);
     
 private:

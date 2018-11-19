@@ -8,7 +8,7 @@
 #include "Distribution.h"
 
 Distribution::Distribution() {
-    RandomNumberGenerator::seedGenerator(time(nullptr));
+    RandomNumberGenerator::seedGenerator();
 }
 
 

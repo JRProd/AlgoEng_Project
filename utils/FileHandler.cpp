@@ -14,12 +14,18 @@ FileHandler::~FileHandler() {
     file.close();
 }
 
-void FileHandler::openFile(std::string filename) {
-    if(file.is_open()) {
-        closeFile();
+void FileHandler::openFile(std::string filename, FileFunction ff) {
+    switch(ff) {
+        case FileFunction::READ:
+            openForRead(filename);
+            break;
+        case FileFunction::WRITE:
+            openForWrite(filename);
+            break;
+        default:
+            openForWrite(filename);
+            break;
     }
-    
-    file.open(filename);
 }
 
 void FileHandler::closeFile() {
@@ -35,6 +41,11 @@ bool FileHandler::write(const std::string key, const std::string value) {
     return true;
 }
 
+std::string FileHandler::readDist() {
+    return dist;
+}
+
+
 bool FileHandler::write(const std::string key, const int value) {
     if(!canWrite()) {
         return false;
@@ -43,6 +54,11 @@ bool FileHandler::write(const std::string key, const int value) {
     file << key << std::endl << value << std::endl;
     return true;
 }
+
+int FileHandler::read(const std::string key) {
+    return intMap[key];
+}
+
 
 bool FileHandler::writeList(
         const std::string key, 
@@ -70,6 +86,63 @@ bool FileHandler::writeList(
     return true;
 }
 
+int* FileHandler::readList(const std::string key) {
+    return listMap[key];
+}
+
+
 bool FileHandler::canWrite() {
     return file.is_open();
+}
+
+#include <iostream>
+void FileHandler::openForRead(std::string filename) {
+    if(!file.is_open()) {
+        file.open(filename, std::ios::in);
+    }
+    
+    std::string line;
+    while(std::getline(file, line)) {
+        if(line == "P" || line == "E") {
+            std::string key = line;
+            int size = 0;
+            
+            if(line == "P") {
+                size = intMap.at("N");
+            } else {
+                size = intMap.at("M");
+            }
+            
+            int* list = new int[size];
+            for(int i = 0; i < size; i++) {
+                std::getline(file, line);
+                int value = std::stoi(line);
+                list[i] = value;
+            }
+            
+            std::cout << "Adding " << key << "->" << list << " to list map" << std::endl;
+            
+            listMap[key] = list;
+        } else if (line == "DIST") {
+            std::getline(file,dist);
+        }
+        else {
+            std::string key = line;
+            std::getline(file,line);
+            
+            std::cout << "Adding " << key << "->" << line << " to map" << std::endl;
+            
+            int intVal = std::stoi(line);
+
+            intMap[key] = intVal;
+        }
+    }
+    
+    file.close();
+}
+
+void FileHandler::openForWrite(std::string filename) {
+    if(!file.is_open()) {
+         file.open(filename, std::ios::out);
+    }
 }

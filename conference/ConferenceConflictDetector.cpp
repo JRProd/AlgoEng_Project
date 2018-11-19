@@ -138,7 +138,7 @@ void ConferenceConflictDetector::handleResults(std::string output) {
         }
     
     FileHandler fileHandler;
-    fileHandler.openFile(output);
+    fileHandler.openFile(output, FileFunction::WRITE);
     
     //N Output
             if(debugMode >= 2 ) {

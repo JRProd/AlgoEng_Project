@@ -11,7 +11,6 @@
 #include <chrono>
 #include <iostream>
 #include <set>
-#include <time.h>
 
 #include "../utils/RandomNumberGenerator.h"
 

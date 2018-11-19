@@ -9,8 +9,14 @@
 #define FILEHANDLER_H
 
 #include <fstream>
+#include <map>
 #include <string>
 #include <sstream>
+
+enum FileFunction {
+    READ,
+    WRITE
+};
 
 class FileHandler {
 public:
@@ -24,7 +30,7 @@ public:
      * 
      * @param filename - File to open for output
      */
-    void openFile(std::string filename);
+    void openFile(std::string filename, FileFunction ff);
     
     /** Close the file to clean up
      * 
@@ -39,6 +45,8 @@ public:
      */
     bool write(const std::string key, const std::string value);
     
+    std::string readDist();
+    
     /** Write a key value pair
      * 
      * @param key - String that contains the key
@@ -46,6 +54,8 @@ public:
      * @return bool - Was write successful
      */
     bool write(const std::string key, const int value);
+    
+    int read(const std::string key);
     
     /** Write a list of integers
      * 
@@ -61,14 +71,25 @@ public:
             const int size, 
             const int batchSize);
     
+    int* readList(const std::string key);
+    
 private:
-    std::ofstream file;
+    std::fstream file;
+    
+    std::map<std::string, int> intMap;
+    std::map<std::string, int*> listMap;
+    
+    std::string dist;
     
     /** Can the ofstream write
      * 
      * @return bool - If the file can write
      */
     bool canWrite();
+    
+    void openForRead(std::string filename);
+    
+    void openForWrite(std::string filename);
 };
 
 #endif /* FILEHANDLER_H */
