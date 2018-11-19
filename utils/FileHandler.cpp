@@ -120,8 +120,6 @@ void FileHandler::openForRead(std::string filename) {
                 list[i] = value;
             }
             
-            std::cout << "Adding " << key << "->" << list << " to list map" << std::endl;
-            
             listMap[key] = list;
         } else if (line == "DIST") {
             std::getline(file,dist);
@@ -129,8 +127,6 @@ void FileHandler::openForRead(std::string filename) {
         else {
             std::string key = line;
             std::getline(file,line);
-            
-            std::cout << "Adding " << key << "->" << line << " to map" << std::endl;
             
             int intVal = std::stoi(line);
 

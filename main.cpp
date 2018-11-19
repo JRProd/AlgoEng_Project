@@ -19,8 +19,6 @@
 using namespace std;
 
 int main(int argc, char** argv) {
-    std::cout << "Starting" << std::endl;
-    
 //    ConferenceConflictDetector cd(
 //            ConferenceConflictParams::Builder()
 //            .setSessions(100)
@@ -33,7 +31,7 @@ int main(int argc, char** argv) {
 //    cd.generateConflicts();
 //    cd.handleResults("largeTest.txt");
 
-    ConferenceScheduler cs("smallTest.txt");
+    ConferenceScheduler cs("output.txt");
     
     cs.chooseOrder(ColorOrdering::SLO);
     
