@@ -19,24 +19,13 @@
 using namespace std;
 
 int main(int argc, char** argv) {
-//    ConferenceConflictDetector cd(
-//            ConferenceConflictParams::Builder()
-//            .setSessions(100)
-//            ->setAttendees(50)
-//            ->setSessionsPerAttendee(20)
-//            ->setDistribution(Dist::Uniform)
-//            ->setConflictSizeConstrinat(ConflictSizeConstraint::N2)
-//            ->build());
-//            
-//    cd.generateConflicts();
-//    cd.handleResults("largeTest.txt");
 
-    ConferenceScheduler cs("output.txt");
+    ConferenceScheduler cs("largeTest.txt");
     
     cs.chooseOrder(ColorOrdering::SLO);
     
     cs.color();
     
-    cs.displaySchedule();
+    cs.displaySchedule(false);
 }
 

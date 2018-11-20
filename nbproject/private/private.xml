@@ -7,8 +7,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/Users/jake.rowland/Algorithm%20Engineering%20Project/AlgoEng_Project/utils/FileHandler.cpp</file>
             <file>file:/Users/jake.rowland/Algorithm%20Engineering%20Project/AlgoEng_Project/main.cpp</file>
-            <file>file:/Users/jake.rowland/Algorithm%20Engineering%20Project/AlgoEng_Project/coloring/RandomOrdering.cpp</file>
+            <file>file:/Users/jake.rowland/Algorithm%20Engineering%20Project/AlgoEng_Project/coloring/ConferenceScheduler.h</file>
+            <file>file:/Users/jake.rowland/Algorithm%20Engineering%20Project/AlgoEng_Project/coloring/Colorer.h</file>
+            <file>file:/Users/jake.rowland/Algorithm%20Engineering%20Project/AlgoEng_Project/coloring/Colorer.cpp</file>
+            <file>file:/Users/jake.rowland/Algorithm%20Engineering%20Project/AlgoEng_Project/coloring/SmallestLastOrdering.cpp</file>
+            <file>file:/Users/jake.rowland/Algorithm%20Engineering%20Project/AlgoEng_Project/coloring/ConferenceScheduler.cpp</file>
         </group>
     </open-files>
 </project-private>
