@@ -71,18 +71,26 @@ void Colorer::buildVertexList(int** peArray, int pSize, int eSize) {
         vertexList[pSize-1]->addConflict(vertexList[conflictSession]);
     }
 }
-
+#include <chrono>
+#include <iostream>
 void Colorer::color() {
     for(int i = 0; i < vertexListLength; i++) {
         colorOrdering->addVertex(*(vertexList+i));
     }
     
+    
     ordering = colorOrdering->getOrdering();
+    
     hasColored = true;
     
+    std::chrono::time_point<std::chrono::system_clock> start = std::chrono::system_clock::now();
     for(Vertex* v : ordering) {
         v->setColor();
     }
+    std::chrono::time_point<std::chrono::system_clock> end = std::chrono::system_clock::now();
+    std::cout << "Coloring takes " 
+              << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() 
+              << "us." << std::endl;
 }
 
 std::vector<Vertex*> Colorer::getVertexList(bool ordered) {

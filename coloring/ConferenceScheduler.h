@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
  * File:   ConferenceScheduler.h
  * Author: jake.rowland
@@ -26,15 +20,30 @@
 #include "Vertex.h"
 #include "../utils/FileHandler.h"
 
+/** Conference Scheduler
+ * 
+ * @param file - File to retrieve input from
+ */
 class ConferenceScheduler {
 public:
     ConferenceScheduler(std::string file);
     ~ConferenceScheduler();
     
+    /** Select the ordering to use
+     * 
+     * @param order - ColorOrdering order
+     */
     void chooseOrder(ColorOrdering order);
     
+    /** Color the graph
+     * 
+     */
     void color();
     
+    /** Display the schedule
+     * 
+     * @param stats - Display stats
+     */
     void displaySchedule(bool stats);
 private:
     int size = 0;
@@ -42,6 +51,9 @@ private:
     Colorer* colorer = nullptr;
     FileHandler fileHandler;
     
+    /** Populate colorer with peArray
+     * 
+     */
     void populateColorer();
 
 };

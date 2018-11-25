@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
  * File:   ColorOrdering.h
  * Author: jake.rowland
@@ -18,6 +12,9 @@
 
 #include "Vertex.h"
 
+/** Enum to quickly choose what kind of ordering to use
+ *
+ */
 enum ColorOrdering {
     SLO,
     RAN,
@@ -26,7 +23,15 @@ enum ColorOrdering {
 
 class ColorOrderingInterface {
 public:
+    /** Add a vertex to a ordering
+     *
+     * @param v - Vertex to add to ordering
+     */
     virtual void addVertex(Vertex* v) = 0;
+    /** Get the ordering based on type
+     * 
+     * @return vector<Vertex*> - the ordering
+     */
     virtual std::vector<Vertex*> getOrdering() = 0;
 };
 

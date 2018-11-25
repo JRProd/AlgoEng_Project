@@ -42,7 +42,6 @@ void SmallestLastOrdering::addVertex(Vertex* v) {
     }
 }
 
-#include <iostream>
 std::vector<Vertex*> SmallestLastOrdering::getOrdering() {
     std::vector<Vertex*> smallestLastOrdering;
 
@@ -176,7 +175,7 @@ Vertex* SmallestLastOrdering::ListNode::getVertex() {
     return vertex;
 }
 
-SmallestLastOrdering::ListNode* SmallestLastOrdering::ListNode::removeNode() {
+void SmallestLastOrdering::ListNode::removeNode() {
     // Removes the backwards link to this node
     if(next != nullptr) {
         next->setPrev(prev);
@@ -189,8 +188,6 @@ SmallestLastOrdering::ListNode* SmallestLastOrdering::ListNode::removeNode() {
     // Destroys the links
     next = nullptr;
     prev = nullptr;
-    
-    return this;
 }
 
 void SmallestLastOrdering::listDegreeLists() {

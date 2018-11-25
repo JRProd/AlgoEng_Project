@@ -22,8 +22,13 @@
 class RandomOrdering : public ColorOrderingInterface{
 public:
     RandomOrdering();
-    
+    /** @reference {addVertex@ColorOrderingInterface.cpp}
+     * 
+     */
     virtual void addVertex(Vertex* v) override;
+    /** @reference {getOrdering@ColorOrderingInterface.cpp}
+     * 
+     */
     std::vector<Vertex*> getOrdering() override;
 
 private:

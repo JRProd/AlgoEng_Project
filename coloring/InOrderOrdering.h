@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
  * File:   InOrderOrdering.h
  * Author: jake.rowland
@@ -19,8 +13,13 @@
 class InOrderOrdering : public ColorOrderingInterface{
 public:
     InOrderOrdering();
-    
+    /** @reference {addVertex@ColorOrderingInterface.cpp}
+     * 
+     */
     virtual void addVertex(Vertex* v) override;
+    /** @reference {getOrdering@ColorOrderingInterface.cpp}
+     * 
+     */
     std::vector<Vertex*> getOrdering() override;
     
 private:
